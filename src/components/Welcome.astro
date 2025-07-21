@@ -1,210 +1,201 @@
----
-import astroLogo from '../assets/astro.svg';
-import background from '../assets/background.svg';
----
-
-<div id="container">
-	<img id="background" src={background.src} alt="" fetchpriority="high" />
-	<main>
-		<section id="hero">
-			<a href="https://astro.build"
-				><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
-			>
-			<h1>
-				To get started, open the <code><pre>src/pages</pre></code> directory in your project.
-			</h1>
-			<section id="links">
-				<a class="button" href="https://docs.astro.build">Read our docs</a>
-				<a href="https://astro.build/chat"
-					>Join our Discord <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
-						><path
-							fill="currentColor"
-							d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"
-						></path></svg
-					>
-				</a>
-			</section>
-		</section>
-	</main>
-
-	<a href="https://astro.build/blog/astro-5/" id="news" class="box">
-		<svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
-			><path
-				d="M24.667 12c1.333 1.414 2 3.192 2 5.334 0 4.62-4.934 5.7-7.334 12C18.444 28.567 18 27.456 18 26c0-4.642 6.667-7.053 6.667-14Zm-5.334-5.333c1.6 1.65 2.4 3.43 2.4 5.333 0 6.602-8.06 7.59-6.4 17.334C13.111 27.787 12 25.564 12 22.666c0-4.434 7.333-8 7.333-16Zm-6-5.333C15.111 3.555 16 5.556 16 7.333c0 8.333-11.333 10.962-5.333 22-3.488-.774-6-4-6-8 0-8.667 8.666-10 8.666-20Z"
-				fill="#111827"></path></svg
-		>
-		<h2>What's New in Astro 5.0?</h2>
-		<p>
-			From content layers to server islands, click to learn more about the new features and
-			improvements in Astro 5.0
-		</p>
-	</a>
+<div class="flex bg-transparent justify-end w-full fixed z-50 p-5">
+  <button
+    onclick="toggleTheme()"
+    class="bg-black w-[60px] h-[60px] justify-center items-center flex rounded-full dark:bg-white text-white dark:text-black hover:invert transition-all duration-500 cursor-pointer"
+  >
+    <span class="material-symbols-outlined">dark_mode</span>
+  </button>
 </div>
 
-<style>
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-	}
+<!-- Hero -->
+<section
+  class="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-gradient-to-br from-primary to-primary-dark text-white dark:from-amber-700 dark:to-amber-600"
+>
+  <h1 class="text-6xl md:text-8xl font-bold mb-4">Bem-vindo à NovusTech</h1>
+  <div
+    class="flex flex-col md:flex-row gap-1 opacity-70 justify-center items-center"
+  >
+    <p class="text-sm md:text-xl max-w-xl">
+      Sistemas profissionais para barbearias, autoescolas e empresas em geral
+    </p>
+    <img
+      src="/imgs/logoNovusTechSemFundo.png"
+      height="40"
+      width="40"
+      alt="Logo NovusTech"
+    />
+  </div>
+  <a
+    href="#servicos"
+    class="flex group items-center justify-center gap-2 mt-6 px-6 py-3 bg-white dark:bg-gray-800 dark:text-white text-primary rounded-xl text-lg font-semibold dark:hover:bg-gray-900 hover:bg-gray-200 transition duration-300"
+  >
+    Ver mais
+    <span
+      class="material-symbols-outlined !font-black group-hover:rotate-90 transition duration-500 group-hover:scale-110"
+    >
+      expand_circle_right
+    </span>
+  </a>
+</section>
 
-	#container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
-	}
+<!-- Serviços -->
+<section id="servicos" class="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-10 dark:text-white">Nossos Serviços</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Autoescola -->
+      <div
+        class="bg-white dark:bg-gray-700 dark:text-white group cursor-pointer hover:scale-105 p-6 rounded-xl shadow hover:shadow-lg transition duration-300"
+      >
+        <img
+          src="/imgs/image-carros.png"
+          alt="Sistema para Autoescolas"
+          class="w-full h-[400px] rounded-xl group-hover:shadow-md brightness-50"
+        />
+        <div class="flex flex-col text-start mt-3">
+          <h3 class="text-4xl font-bold mb-2">Sistema para Autoescolas</h3>
+          <p class="font-light text-sm">
+            O Novus CFC é um sistema completo de gerenciamento para autoescolas,
+            com área para alunos e instrutores.
+          </p>
+        </div>
+        <a
+          href="#contato"
+          class="flex mt-5 underline decoration-gray-300 underline-offset-8 decoration-2 group-hover:decoration-gray-700 dark:group-hover:decoration-white text-start w-full transition-all duration-300"
+        >
+          SAIBA MAIS
+        </a>
+      </div>
 
-	main {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-	}
+      <!-- Barbearia -->
+      <div
+        class="bg-white dark:bg-gray-700 dark:text-white group cursor-pointer hover:scale-105 p-6 rounded-xl shadow hover:shadow-lg transition duration-300"
+      >
+        <img
+          src="/imgs/imagem-salao.jpg"
+          alt="Sistema para Barbearias"
+          class="w-full h-[400px] rounded-xl group-hover:shadow-md brightness-50"
+        />
+        <div class="flex flex-col text-start mt-3">
+          <h3 class="text-4xl font-bold mb-2">Sistema para Barbearias</h3>
+          <p class="font-light text-sm">
+            O Novus Barber facilita agendamentos e atendimento para barbearias,
+            salões e serviços de beleza.
+          </p>
+        </div>
+        <a
+          href="#contato"
+          class="flex mt-5 underline decoration-gray-300 underline-offset-8 decoration-2 group-hover:decoration-gray-700 dark:group-hover:decoration-white text-start w-full transition-all duration-300"
+        >
+          SAIBA MAIS
+        </a>
+      </div>
 
-	#hero {
-		display: flex;
-		align-items: start;
-		flex-direction: column;
-		justify-content: center;
-		padding: 16px;
-	}
+      <!-- Criação de sites -->
+      <div
+        class="bg-white dark:bg-gray-700 dark:text-white group cursor-pointer hover:scale-105 p-6 rounded-xl shadow hover:shadow-lg transition duration-300"
+      >
+        <img
+          src="/imgs/imagem-site.jpg"
+          alt="Criação de Sites Profissionais"
+          class="w-full h-[400px] rounded-xl group-hover:shadow-md brightness-50"
+        />
+        <div class="flex flex-col text-start mt-3">
+          <h3 class="text-4xl font-bold mb-2">
+            Criação de Sites Profissionais
+          </h3>
+          <p class="font-light text-sm">
+            Criamos seu site moderno, rápido e com ótimo custo-benefício. Ideal
+            para quem quer presença digital.
+          </p>
+        </div>
+        <a
+          href="#contato"
+          class="flex mt-5 underline decoration-gray-300 underline-offset-8 decoration-2 group-hover:decoration-gray-700 dark:group-hover:decoration-white text-start w-full transition-all duration-300"
+        >
+          SAIBA MAIS
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-	h1 {
-		font-size: 22px;
-		margin-top: 0.25em;
-	}
+<!-- Contador -->
+<section id="contador" class="py-20 bg-white dark:bg-gray-900">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+      Já realizamos
+    </h2>
+    <div class="flex flex-col gap-10 items-center justify-center">
+      <div>
+        <p
+          class="text-7xl md:text-9xl max-w-fit font-extrabold text-primary border-b-3 border-primary dark:border-amber-400 dark:text-amber-400"
+        >
+          <span id="contador-agendamentos">0</span>+
+        </p>
+        <p class="text-xl font-semibold dark:text-white">Agendamentos</p>
+      </div>
+      <div>
+        <p
+          class="text-7xl md:text-9xl font-extrabold text-primary border-b-3 border-primary dark:border-amber-400 dark:text-amber-400"
+        >
+          <span id="contador-sites">0</span>+
+        </p>
+        <p class="text-xl font-semibold dark:text-white">Sites criados</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-	#links {
-		display: flex;
-		gap: 16px;
-	}
+<!-- Contato -->
+<section
+  id="contato"
+  class="flex flex-col py-10 px-4 bg-black text-gray-100 justify-center items-center gap-2 text-center"
+>
+  <h1 class="text-5xl md:text-6xl font-bold">Saiba mais</h1>
+  <h3 class="text-xl md:text-2xl font-normal">
+    Transforme sua <strong>empresa</strong> com tecnologia. Agende agora mesmo!
+  </h3>
+  <a
+    href="https://wa.me/5517997419297"
+    class="flex gap-2 p-4 px-10 bg-amber-700 m-2 rounded-full cursor-pointer hover:opacity-90 transition duration-500 font-medium hover:scale-105 drop-shadow-[0_0_8px_rgba(255,255,0,0.4)]"
+  >
+    Inovar minha empresa
+    <span class="material-symbols-outlined">flag</span>
+  </a>
+</section>
 
-	#links a {
-		display: flex;
-		align-items: center;
-		padding: 10px 12px;
-		color: #111827;
-		text-decoration: none;
-		transition: color 0.2s;
-	}
+<!-- Rodapé -->
+<footer class="py-6 text-center text-sm bg-black text-gray-100">
+  © 2025 - NovusTech. Todos os direitos reservados.
+</footer>
 
-	#links a:hover {
-		color: rgb(78, 80, 86);
-	}
+<!-- Contador Script -->
+<script>
+  function animarContador(elemento, valorFinal, duracao = 2000) {
+    const el = document.getElementById(elemento);
+    let inicio = 0;
+    const incremento = Math.ceil(valorFinal / (duracao / 16));
+    const intervalo = setInterval(() => {
+      inicio += incremento;
+      if (inicio >= valorFinal) {
+        el.innerText = valorFinal.toLocaleString("pt-BR");
+        clearInterval(intervalo);
+      } else {
+        el.innerText = inicio.toLocaleString("pt-BR");
+      }
+    }, 16);
+  }
 
-	#links a svg {
-		height: 1em;
-		margin-left: 8px;
-	}
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animarContador("contador-agendamentos", 6000);
+        animarContador("contador-sites", 10);
+        observer.disconnect();
+      }
+    });
+  });
 
-	#links a.button {
-		color: white;
-		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		box-shadow:
-			inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-			inset 0 -2px 0 rgba(0, 0, 0, 0.24);
-		border-radius: 10px;
-	}
-
-	#links a.button:hover {
-		color: rgb(230, 230, 230);
-		box-shadow: none;
-	}
-
-	pre {
-		font-family:
-			ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono',
-			monospace;
-		font-weight: normal;
-		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		margin: 0;
-	}
-
-	h2 {
-		margin: 0 0 1em;
-		font-weight: normal;
-		color: #111827;
-		font-size: 20px;
-	}
-
-	p {
-		color: #4b5563;
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: -0.006em;
-		margin: 0;
-	}
-
-	code {
-		display: inline-block;
-		background:
-			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
-			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
-		border-radius: 8px;
-		border: 1px solid transparent;
-		padding: 6px 8px;
-	}
-
-	.box {
-		padding: 16px;
-		background: rgba(255, 255, 255, 1);
-		border-radius: 16px;
-		border: 1px solid white;
-	}
-
-	#news {
-		position: absolute;
-		bottom: 16px;
-		right: 16px;
-		max-width: 300px;
-		text-decoration: none;
-		transition: background 0.2s;
-		backdrop-filter: blur(50px);
-	}
-
-	#news:hover {
-		background: rgba(255, 255, 255, 0.55);
-	}
-
-	@media screen and (max-height: 368px) {
-		#news {
-			display: none;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
-
-		#hero {
-			display: block;
-			padding-top: 10%;
-		}
-
-		#links {
-			flex-wrap: wrap;
-		}
-
-		#links a.button {
-			padding: 14px 18px;
-		}
-
-		#news {
-			right: 16px;
-			left: 16px;
-			bottom: 2.5rem;
-			max-width: 100%;
-		}
-
-		h1 {
-			line-height: 1.5;
-		}
-	}
-</style>
+  observer.observe(document.getElementById("contador"));
+</script>

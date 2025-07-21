@@ -1,11 +1,31 @@
+---
+// Astro layout
+import "../styles/global.css";
+---
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+
+		<!-- TÍTULO E DESCRIÇÃO PARA O GOOGLE -->
+		<title>Novus - Sites e Sistemas com Agendamento via WhatsApp</title>
+		<meta name="description" content="Soluções para barbearias, autoescolas e pequenos negócios. Sites modernos com agendamento automatizado via WhatsApp. Simples, direto e eficiente.">
+
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+		
+		<script>
+			const html = document.documentElement;
+			const theme = localStorage.getItem("theme");
+			if (theme === "dark") {
+				html.setAttribute("data-theme", "dark");
+			} else {
+				html.setAttribute("data-theme", "light");
+			}
+		</script>
+		<script src="/scripts/tema.js" is:inline></script>
 	</head>
 	<body>
 		<slot />
