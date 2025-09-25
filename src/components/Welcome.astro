@@ -1,15 +1,15 @@
-<div class="flex bg-transparent justify-end w-full fixed z-50 p-5">
+<!-- <div class="flex bg-transparent justify-end w-full fixed z-50 p-5">
   <button
     onclick="toggleTheme()"
     class="bg-black w-[60px] h-[60px] justify-center items-center flex rounded-full dark:bg-white text-white dark:text-black hover:invert transition-all duration-500 cursor-pointer"
   >
     <span class="material-symbols-outlined">dark_mode</span>
   </button>
-</div>
+</div> -->
 
 <!-- Hero -->
 <section
-  class="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-gradient-to-br from-primary to-primary-dark text-white dark:from-amber-700 dark:to-amber-600"
+  class="min-h-[90%] flex flex-col justify-center items-center text-center px-4 bg-gradient-to-br from-primary to-primary-dark text-white dark:from-amber-700 dark:to-amber-600"
 >
   <h1 class="text-6xl md:text-8xl font-bold mb-4">Bem-vindo à NovusTech</h1>
   <div
@@ -158,7 +158,7 @@
   </h3>
   <a
     href="https://wa.me/5517997419297"
-    class="flex gap-2 p-4 px-10 bg-amber-700 m-2 rounded-full cursor-pointer hover:opacity-90 transition duration-500 font-medium hover:scale-105 drop-shadow-[0_0_8px_rgba(255,255,0,0.4)]"
+    class="flex gap-2 p-4 px-10 bg-amber-700 mt-10 m-2 rounded-full cursor-pointer hover:opacity-90 transition duration-500 font-medium hover:scale-105 drop-shadow-[0_0_8px_rgba(255,255,0,0.4)]"
   >
     Inovar minha empresa
     <span class="material-symbols-outlined">flag</span>
@@ -190,7 +190,7 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        animarContador("contador-agendamentos", 6000);
+        animarContador("contador-agendamentos", 10000);
         animarContador("contador-sites", 10);
         observer.disconnect();
       }
