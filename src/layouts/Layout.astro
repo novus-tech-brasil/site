@@ -6,15 +6,32 @@ import "../styles/global.css";
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- TÍTULO E DESCRIÇÃO PARA O GOOGLE -->
-		<title>Novus - Sites e Sistemas com Agendamento via WhatsApp</title>
-		<meta name="description" content="Soluções para barbearias, autoescolas e pequenos negócios. Sites modernos com agendamento automatizado via WhatsApp. Simples, direto e eficiente.">
+		<title>NovusTech - Sites e Sistemas com Agendamento via WhatsApp</title>
+		<meta name="description" content="Soluções tecnológicas para barbearias, autoescolas e pequenos negócios. Sites modernos com agendamento automatizado via WhatsApp. Simples, direto e eficiente.">
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="NovusTech - Sites e Sistemas Profissionais">
+		<meta property="og:description" content="Soluções tecnológicas para barbearias, autoescolas e pequenos negócios. Sites modernos com agendamento automatizado via WhatsApp.">
+		<meta property="og:image" content="/site/imgs/logoNovusTech.png">
+		
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="NovusTech - Sites e Sistemas Profissionais">
+		<meta name="twitter:description" content="Soluções tecnológicas para barbearias, autoescolas e pequenos negócios.">
 
-		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+		<!-- Preconnect para performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 		
 		<script>
 			const html = document.documentElement;
@@ -27,7 +44,7 @@ import "../styles/global.css";
 		</script>
 		<script src="site/scripts/tema.js" is:inline></script>	
 	</head>
-	<body class="bg-white text-black dark:bg-zinc-900 dark:text-white">
+	<body class="bg-white text-black dark:bg-zinc-900 dark:text-white font-['Inter',sans-serif] antialiased">
 		<slot />
 	</body>
 </html>
@@ -38,5 +55,18 @@ import "../styles/global.css";
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		overflow-x: hidden;
+	}
+
+	/* Animação de entrada suave */
+	body {
+		opacity: 0;
+		animation: fadeIn 0.5s ease-out forwards;
+	}
+
+	@keyframes fadeIn {
+		to {
+			opacity: 1;
+		}
 	}
 </style>
