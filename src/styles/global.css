@@ -9,6 +9,10 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+body{
+  scroll-behavior: smooth;
+}
+
 /* Animações */
 @keyframes fade-in-up {
   from {
