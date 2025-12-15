@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 
-const site = 'https://novus-tech-brasil.github.io';
+const site = 'https://thenovustech.com.br';
 
 // https://astro.build/config
 export default defineConfig({
