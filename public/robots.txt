@@ -1,0 +1,32 @@
+# Robots.txt para NovusTech - Instruções para Crawlers do Google
+# Permite indexação total com direcionamento estratégico
+
+User-agent: *
+Allow: /
+
+# Priorizar Novus CFC e homepage
+Disallow: /admin/
+Disallow: /*.pdf$
+Disallow: /*.docx$
+
+# Sitemap para melhor indexação
+Sitemap: https://thenovustech.com.br/sitemap.xml
+
+# Crawl delay para evitar sobrecarga
+Crawl-delay: 1
+
+# User agents específicos
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bloquear bots maliciosos
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /

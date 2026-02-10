@@ -1,0 +1,175 @@
+<!-- Navbar Fixa -->
+<nav
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    id="navbar"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-2 group">
+                <img
+                    src={`/imgs/logoNovusTechSemFundo.png`}
+                    height="45"
+                    width="45"
+                    alt="Logo NovusTech"
+                    class="transition-transform duration-300 group-hover:scale-110"
+                />
+                <span class="text-xl font-bold text-white hidden sm:block"
+                    >NovusTech</span
+                >
+            </a>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center gap-8" id="desktop-menu">
+                <!-- Links será populado dinamicamente -->
+                <a
+                    href="#servicos"
+                    class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                    >Serviços</a
+                >
+                <a
+                    href="#diferenciais"
+                    class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                    >Diferenciais</a
+                >
+                <a
+                    href="#depoimentos"
+                    class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                    >Depoimentos</a
+                >
+                <a
+                    href="#faq"
+                    class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                    >FAQ</a
+                >
+                <a
+                    href="#contato"
+                    class="px-5 py-2.5 bg-white text-primary rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
+                >
+                    Contato
+                </a>
+            </div>
+
+            <!-- Botões Mobile -->
+            <div class="flex items-center gap-3">
+                <!-- Menu Mobile Toggle -->
+                <button
+                    id="mobile-menu-btn"
+                    class="md:hidden bg-white/10 w-12 h-12 justify-center items-center flex rounded-full text-white hover:bg-white/20 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+                >
+                    <span class="material-symbols-outlined text-xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-black/90 backdrop-blur-lg border-t border-white/10"
+    >
+        <div class="px-4 py-6 space-y-4" id="mobile-menu-content">
+            <!-- Links será populado dinamicamente -->
+            <a
+                href="#servicos"
+                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                >Serviços</a
+            >
+            <a
+                href="#diferenciais"
+                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                >Diferenciais</a
+            >
+            <a
+                href="#depoimentos"
+                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                >Depoimentos</a
+            >
+            <a
+                href="#faq"
+                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                >FAQ</a
+            >
+            <a
+                href="#contato"
+                class="block w-full text-center px-5 py-3 bg-white text-primary rounded-full font-semibold"
+                >Contato</a
+            >
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Detectar página e renderizar links apropriados
+    const location = window.location.pathname;
+    const navbar = document.getElementById("navbar");
+    const desktopMenu = document.getElementById("desktop-menu");
+    const mobileMenuContent = document.getElementById("mobile-menu-content");
+
+    // Definir links baseado na página
+    const homeLinks = [
+        { href: "#servicos", label: "Serviços" },
+        { href: "#diferenciais", label: "Diferenciais" },
+        { href: "#depoimentos", label: "Depoimentos" },
+        { href: "#faq", label: "FAQ" },
+        { href: "#contato", label: "Contato", cta: true }
+    ];
+
+    const novuscfcLinks = [
+        { href: "/", label: "Home", icon: "home" },
+        { href: "#hero", label: "Início" },
+        { href: "#recursos", label: "Recursos" },
+        { href: "#depoimentos", label: "Depoimentos" },
+        { href: "#tecnologia", label: "Tecnologia" },
+        { href: "#contato", label: "Contato", cta: true }
+    ];
+
+    const links = location === "/novus-cfc" ? novuscfcLinks : homeLinks;
+
+    // Renderizar menu desktop
+    if (desktopMenu) {
+        desktopMenu.innerHTML = links.map(link => {
+            if (link.cta) {
+                return `<a href="${link.href}" class="px-5 py-2.5 bg-white text-primary rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg">${link.label}</a>`;
+            }
+            return `<a href="${link.href}" class="text-white/80 hover:text-white transition-colors duration-300 font-medium flex items-center gap-1">${link?.icon ? `<span class="material-symbols-outlined text-lg">${link?.icon}</span>` : ''}${link.label}</a>`;
+        }).join("");
+    }
+
+    // Renderizar menu mobile
+    if (mobileMenuContent) {
+        mobileMenuContent.innerHTML = links.map(link => {
+            if (link.cta) {
+                return `<a href="${link.href}" class="block w-full text-center px-5 py-3 bg-white text-primary rounded-full font-semibold">${link.label}</a>`;
+            }
+            return `<a href="${link.href}" class="block text-white/80 hover:text-white transition-colors py-2 font-medium">${link.label}</a>`;
+        }).join("");
+    }
+
+    // Estilo navbar no Novus CFC
+    if(location === "/novus-cfc" && navbar) {
+        navbar.classList.add("bg-[rgba(0,0,0,0.9)]", "backdrop-blur-sm");
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    };
+
+    // Navbar background on scroll
+    window.addEventListener("scroll", () => {
+        if (!navbar) return;
+        if (window.scrollY > 50) {
+            navbar.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+            navbar.style.backdropFilter = "blur(10px)";
+        } else {
+            navbar.style.backgroundColor = "transparent";
+            navbar.style.backdropFilter = "none";
+        }
+    });
+</script>

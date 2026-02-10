@@ -1,0 +1,197 @@
+---
+// NovusCFCHero.astro - Hero section para página do Novus CFC
+---
+
+<section class="relative min-h-screen flex items-center justify-center pt-20 pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <!-- Background Gradient -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-[#6f0a59] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#ffcd00] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float" style="animation-delay: 2s;"></div>
+  </div>
+
+  <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <!-- Left Content -->
+    <div class="flex flex-col gap-8 animate-fade-in-up">
+      <!-- Badge -->
+      <div class="inline-flex w-fit items-center gap-2 px-4 py-2 rounded-full glass backdrop-blur-md border border-[#6f0a59]/20">
+        <span class="material-symbols-outlined text-lg text-[#ffcd00]">auto_awesome</span>
+        <span class="text-sm font-semibold gradient-text">Solução Profissional para Autoescolas</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+        <span class="gradient-text">Transforme</span> sua autoescola
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+        O melhor software de autoescola para agendamento online 24/7. Organize sua frota, gestão de alunos, instrutores e financeiro. Zero conflitos de horário com sistema inteligente.
+      </p>
+
+      <!-- Stats Row -->
+      <div class="grid grid-cols-3 gap-4 pt-4">
+        <div class="bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm rounded-lg p-4 border border-[#6f0a59]/10">
+          <div class="text-3xl font-bold text-[#6f0a59]">24/7</div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Disponível sempre</p>
+        </div>
+        <div class="bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm rounded-lg p-4 border border-[#6f0a59]/10">
+          <div class="text-3xl font-bold text-[#6f0a59]">0</div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Conflitos hora</p>
+        </div>
+        <div class="bg-white/40 dark:bg-slate-800/40 backdrop-blur-sm rounded-lg p-4 border border-[#6f0a59]/10">
+          <div class="text-3xl font-bold text-[#6f0a59]">∞</div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Escalável</p>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 pt-4">
+        <a href="https://api.whatsapp.com/send?phone=5517997437646&text=Olá! Gostaria de saber mais sobre o Novus CFC" 
+           target="_blank" rel="noopener noreferrer"
+           class="px-8 py-4 bg-[#6f0a59] hover:bg-[#4d003d] text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+          <span class="material-symbols-outlined">chat_bubble</span>
+          Falar com especialista
+        </a>
+        <a href="#features"
+           class="px-8 py-4 border-2 border-[#6f0a59] text-[#6f0a59] dark:text-white dark:border-white hover:bg-[#6f0a59] hover:text-white dark:hover:bg-white dark:hover:text-[#6f0a59] font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined">expand_more</span>
+          Ver funcionalidades
+        </a>
+      </div>
+
+      <!-- Trust Badge -->
+      <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 pt-4">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full bg-[#6f0a59] flex items-center justify-center text-white font-bold text-xs">N</div>
+          <div class="w-8 h-8 rounded-full bg-[#ffcd00] flex items-center justify-center text-[#6f0a59] font-bold text-xs">C</div>
+          <div class="w-8 h-8 rounded-full bg-[#ff6b35] flex items-center justify-center text-white font-bold text-xs">F</div>
+        </div>
+        <span>Confiado por autoescolas em todo Brasil</span>
+      </div>
+    </div>
+
+    <!-- Right Visual -->
+    <div class="relative h-full min-h-96 lg:min-h-screen flex items-center justify-center animate-fade-in" style="animation-delay: 0.2s;">
+      <div class="relative w-full max-w-md">
+        <!-- Mockup Container -->
+        <div class="bg-gradient-to-br from-[#6f0a59]/20 to-transparent rounded-2xl p-8 backdrop-blur-sm border border-[#6f0a59]/20">
+          <!-- Phone Frame -->
+          <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden border-8 border-gray-900">
+            <!-- Screen Content -->
+            <div class="bg-gradient-to-b from-[#6f0a59] to-[#4d003d] p-6 text-white min-h-96 flex flex-col gap-4">
+              <!-- Header -->
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold">Marcar Aula</h3>
+                <span class="material-symbols-outlined text-2xl">smartphone</span>
+              </div>
+
+              <!-- Step 1 -->
+              <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 space-y-2">
+                <p class="text-xs text-white/70">Passo 1</p>
+                <p class="font-semibold">Escolha a categoria</p>
+                <div class="flex gap-2">
+                  <button class="px-3 py-1 bg-[#ffcd00] text-[#6f0a59] rounded text-xs font-bold">B</button>
+                  <button class="px-3 py-1 bg-white/20 text-white rounded text-xs">A</button>
+                  <button class="px-3 py-1 bg-white/20 text-white rounded text-xs">C</button>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 space-y-2 opacity-70">
+                <p class="text-xs text-white/70">Passo 2</p>
+                <p class="font-semibold text-sm">Selecione o instrutor</p>
+                <div class="h-2 bg-white/10 rounded"></div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 space-y-2 opacity-40">
+                <p class="text-xs text-white/70">Passo 3 e 4</p>
+                <div class="h-2 bg-white/10 rounded"></div>
+              </div>
+
+              <!-- Confirm Button -->
+              <button class="w-full mt-2 bg-[#ffcd00] text-[#6f0a59] font-bold py-3 rounded-lg flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-lg">check_circle</span>
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute -top-6 -right-6 bg-white dark:bg-slate-800 rounded-lg p-4 shadow-xl border border-[#6f0a59]/10 animate-float">
+          <p class="text-xs text-gray-600 dark:text-gray-400">Tempo médio</p>
+          <p class="text-2xl font-bold text-[#6f0a59]">2 min</p>
+        </div>
+
+        <div class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 rounded-lg p-4 shadow-xl border border-[#6f0a59]/10 animate-float" style="animation-delay: 1.5s;">
+          <p class="text-xs text-gray-600 dark:text-gray-400">Sistema</p>
+          <p class="text-lg font-bold text-[#ffcd00]">Zero Conflitos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gradient-text {
+    background: linear-gradient(135deg, #6f0a59 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :global(.dark) .gradient-text {
+    background: linear-gradient(135deg, #fbbf24 0%, #ffcd00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>

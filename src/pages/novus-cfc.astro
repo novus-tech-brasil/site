@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NovusCFCHero from '../components/NovusCFCHero.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import Features from '../components/Features.astro';
+import Testimonials from '../components/Testimonials.astro';
+import TechStack from '../components/TechStack.astro';
+import PricingCTA from '../components/PricingCTA.astro';
+
+const title = "Novus CFC - Software de Autoescola | Sistema Agendamento Online 24/7";
+const description = "Novus CFC é o melhor software para autoescola. Sistema completo de agendamento, gestão de alunos, instrutores, veículos e financeiro. Zero conflitos de horário, disponível 24/7. Experimente grátis!";
+const keywords = "software autoescola, sistema agendamento aulas, gestão CFC, autoscola online, software para autoescola, sistema gestão instrtor, software agendamento aulas práticas";
+
+// Schema.org JSON-LD estruturado para SEO
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Novus CFC",
+  "description": "Sistema profissional completo para gestão de autoescolas com agendamento online, gestão de alunos, instrutores, veículos e controle financeiro.",
+  "url": "https://thenovustech.com.br/novus-cfc",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "offers": {
+    "@type": "Offer",
+    "price": "Customizado",
+    "priceCurrency": "BRL",
+    "URL": "https://thenovustech.com.br/novus-cfc"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "100",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "NovusTech",
+    "url": "https://thenovustech.com.br"
+  },
+  "inLanguage": "pt-BR",
+  "countryOfOrigin": {
+    "@type": "Country",
+    "name": "BR"
+  }
+};
+
+// Breadcrumb Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://thenovustech.com.br"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Novus CFC - Software Autoescola",
+      "item": "https://thenovustech.com.br/novus-cfc"
+    }
+  ]
+};
+
+// LocalBusiness Schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "NovusTech - Novus CFC",
+  "image": "https://thenovustech.com.br/imgs/logoNovusTechSemFundo.png",
+  "description": "Sistema profissional de software para autoescolas",
+  "url": "https://thenovustech.com.br",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+55-17-997437646"
+  },
+  "areaServed": "BR",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "BR",
+    "addressRegion": "SP"
+  }
+};
+
+// FAQ Schema para featured snippets
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é Novus CFC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Novus CFC é um software profissional completo para gestão de autoescolas, com sistema de agendamento online 24/7, gestão de alunos, instrutores, veículos e controle financeiro automatizado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como o Novus CFC elimina conflitos de horário?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O sistema implementa constraints inteligentes no banco de dados que garantem que um instrutor, veículo ou aluno não possa ter duas aulas marcadas ao mesmo horário, prevenindo conflitos automaticamente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso agendar aulas 24 horas por dia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim! A plataforma está disponível 24/7. Alunos podem marcar aulas a qualquer hora pelo celular, respeitando a disponibilidade de instrutores e veículos configurada no sistema."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <!-- JSON-LD Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+  <!-- Breadcrumbs Visíveis para UX e SEO -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mt-20" aria-label="Breadcrumb">
+    <ol class="flex items-center gap-2 text-sm">
+      <li>
+        <a href="/" class="text-[#6f0a59] dark:text-[#ffcd00] hover:underline font-semibold">Home</a>
+      </li>
+      <li class="text-gray-600 dark:text-gray-400">/</li>
+      <li class="text-gray-700 dark:text-gray-300" aria-current="page">Novus CFC - Software Autoescola</li>
+    </ol>
+  </nav>
+
+  <!-- Main Content -->
+  <main role="main" itemscope itemtype="https://schema.org/WebPage">
+    <meta itemprop="name" content={title} />
+    <meta itemprop="description" content={description} />
+    <meta itemprop="keywords" content={keywords} />
+
+    <!-- Hero Section com H1 otimizado -->
+    <article>
+      <section id="hero" class="relative">
+        <div class="sr-only">
+          <h1>Novus CFC - Software de Autoescola com Agendamento Online 24/7</h1>
+          <p>Sistema profissional para gestão completa de autoescolas com zero conflitos de horário, controle financeiro automatizado e suporte a múltiplas unidades.</p>
+        </div>
+        <NovusCFCHero />
+      </section>
+
+      <!-- Antes e Depois -->
+      <section id="antes-depois" aria-labelledby="section-antes-depois">
+        <h2 id="section-antes-depois" class="sr-only">Comparativo Antes e Depois do Novus CFC</h2>
+        <BeforeAfter />
+      </section>
+
+      <!-- Recursos/Funcionalidades -->
+      <section id="recursos" aria-labelledby="section-recursos">
+        <h2 id="section-recursos" class="sr-only">Recursos e Funcionalidades para Alunos, Instrutores e Administração</h2>
+        <Features />
+      </section>
+
+      <!-- Social Proof & Depoimentos -->
+      <section id="depoimentos" aria-labelledby="section-depoimentos">
+        <h2 id="section-depoimentos" class="sr-only">Depoimentos de Clientes Satisfeitos</h2>
+        <Testimonials />
+      </section>
+
+      <!-- Stack Técnico -->
+      <section id="tecnologia" aria-labelledby="section-tecnologia">
+        <h2 id="section-tecnologia" class="sr-only">Tecnologia e Stack Técnico Profissional</h2>
+        <TechStack />
+      </section>
+
+      <!-- Pricing e CTA -->
+      <section id="contato" aria-labelledby="section-contato">
+        <h2 id="section-contato" class="sr-only">Planos e Contato</h2>
+        <PricingCTA />
+      </section>
+    </article>
+
+    <!-- Final FAQ/CTA Section -->
+    <section id="faq-cta" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 id="faq-heading" class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          Ainda tem dúvidas sobre o Novus CFC?
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+          Nossa equipe de especialistas em software de autoescola está pronta para esclarecer tudo. Fale com um especialista agora mesmo.
+        </p>
+        <a href="https://api.whatsapp.com/send?phone=5517997437646&text=Olá! Tenho dúvidas sobre o Novus CFC - Software para Autoescola" 
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#6f0a59] hover:bg-[#4d003d] text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <span class="material-symbols-outlined">chat_bubble</span>
+          Falar com Especialista via WhatsApp
+        </a>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mt-4">
+          Resposta em minutos • Demonstração ao vivo • Sem compromisso
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style>

@@ -1,183 +1,237 @@
 ---
 // Astro layout
 import "../styles/global.css";
-
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 interface Props {
 	title?: string;
 	description?: string;
+	keywords?: string;
+	ogImage?: string;
 }
 
-const { 
+const {
 	title = "NovusTech | Sistema para Autoescolas, Barbearias e Criação de Sites Profissionais",
-	description = "Especialistas em sistema para autoescolas (Novus CFC), sistema para barbearias (Novus Barber) e desenvolvimento de sites profissionais. Agendamento via WhatsApp, gestão completa e soluções sob medida para seu negócio."
+	description = "Especialistas em sistema para autoescolas (Novus CFC), sistema para barbearias (Novus Barber) e desenvolvimento de sites profissionais. Agendamento via WhatsApp, gestão completa e soluções sob medida para seu negócio.",
+	keywords = "sistema para autoescola, software autoescola, sistema CFC, gestão de autoescola, agendamento aulas autoescola, sistema para barbearia, software barbearia, agendamento barbearia, criação de sites, desenvolvimento de sites, sites profissionais",
+	ogImage = "/imgs/logoNovusTech.png"
 } = Astro.props;
+
+// Detectar página para meta tags dinâmicas
+const currentPath = Astro.url.pathname;
+const isNovusCFC = currentPath.includes('novus-cfc');
+const pageTitle = isNovusCFC 
+	? `Novus CFC - Software de Autoescola | Sistema Agendamento Online 24/7` 
+	: title;
 ---
+
 <!doctype html>
 <html lang="pt-BR">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="canonical" href="https://novustech.com.br/" />
+		<link rel="canonical" href={Astro.url.href} />
 		<meta name="generator" content={Astro.generator} />
-		
+
 		<!-- SEO Principal -->
-		<title>{title}</title>
+		<title>{pageTitle}</title>
 		<meta name="description" content={description} />
-		
-		<!-- Keywords otimizadas para os 3 nichos -->
-		<meta name="keywords" content="sistema para autoescola, software autoescola, sistema CFC, gestão de autoescola, agendamento aulas autoescola, sistema para barbearia, software barbearia, agendamento barbearia, gestão barbearia, criação de sites, desenvolvimento de sites, sites profissionais, sites para empresas, sites com agendamento, WhatsApp agendamento, NovusTech, Novus CFC, Novus Barber" />
-		
+		<meta name="keywords" content={keywords} />
+
 		<!-- Robots e Indexação -->
-		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta
+			name="robots"
+			content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+		/>
 		<meta name="googlebot" content="index, follow" />
-		
+
 		<!-- Informações da Empresa -->
 		<meta name="author" content="NovusTech" />
 		<meta name="publisher" content="NovusTech" />
 		<meta name="copyright" content="NovusTech" />
-		
+
 		<!-- Geolocalização (Brasil) -->
 		<meta name="geo.region" content="BR-SP" />
 		<meta name="geo.country" content="BR" />
 		<meta name="language" content="pt-BR" />
-		
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="pt_BR" />
 		<meta property="og:site_name" content="NovusTech" />
-		<meta property="og:title" content="NovusTech | Sistema para Autoescolas, Barbearias e Sites Profissionais" />
-		<meta property="og:description" content="Sistemas completos para autoescolas e barbearias com agendamento via WhatsApp. Criação de sites profissionais sob medida. Transforme seu negócio com tecnologia." />
-		<meta property="og:image" content="/imgs/logoNovusTech.png" />
-		<meta property="og:image:alt" content="NovusTech - Sistemas e Sites Profissionais" />
-		<meta property="og:url" content="https://novustech.com.br/" />
-		
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content={pageTitle} />
+		<meta property="og:url" content={Astro.url.href} />
+
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="NovusTech | Sistema para Autoescolas, Barbearias e Sites" />
-		<meta name="twitter:description" content="Sistemas completos para autoescolas e barbearias. Criação de sites profissionais. Agendamento automatizado via WhatsApp." />
-		<meta name="twitter:image" content="/imgs/logoNovusTech.png" />
-		
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
 		<!-- Schema.org JSON-LD - Dados Estruturados -->
 		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "Organization",
-			"name": "NovusTech",
-			"description": "Empresa especializada em sistemas para autoescolas, sistemas para barbearias e criação de sites profissionais",
-			"url": "https://novustech.com.br",
-			"logo": "https://novustech.com.br/imgs/logoNovusTech.png",
-			"contactPoint": {
-				"@type": "ContactPoint",
-				"telephone": "+55-17-99743-7646",
-				"contactType": "sales",
-				"availableLanguage": "Portuguese"
-			},
-			"sameAs": [],
-			"areaServed": "BR",
-			"serviceType": ["Sistema para Autoescolas", "Sistema para Barbearias", "Criação de Sites"]
-		}
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "NovusTech",
+				"description": "Empresa especializada em sistemas para autoescolas, sistemas para barbearias e criação de sites profissionais",
+				"url": "https://novustech.com.br",
+				"logo": "https://novustech.com.br/imgs/logoNovusTech.png",
+				"contactPoint": {
+					"@type": "ContactPoint",
+					"telephone": "+55-17-99743-7646",
+					"contactType": "sales",
+					"availableLanguage": "Portuguese"
+				},
+				"sameAs": [],
+				"areaServed": "BR",
+				"serviceType": [
+					"Sistema para Autoescolas",
+					"Sistema para Barbearias",
+					"Criação de Sites"
+				]
+			}
 		</script>
-		
+
 		<!-- Schema.org - Serviços -->
 		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "ItemList",
-			"name": "Serviços NovusTech",
-			"itemListElement": [
-				{
-					"@type": "ListItem",
-					"position": 1,
-					"item": {
-						"@type": "Service",
-						"name": "Novus CFC - Sistema para Autoescolas",
-						"description": "Sistema completo de gerenciamento para autoescolas com agendamento de aulas online, controle financeiro integrado e aplicativo para instrutores.",
-						"provider": {"@type": "Organization", "name": "NovusTech"}
+			{
+				"@context": "https://schema.org",
+				"@type": "ItemList",
+				"name": "Serviços NovusTech",
+				"itemListElement": [
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"item": {
+							"@type": "Service",
+							"name": "Novus CFC - Sistema para Autoescolas",
+							"description": "Sistema completo de gerenciamento para autoescolas com agendamento de aulas online, controle financeiro integrado e aplicativo para instrutores.",
+							"provider": {
+								"@type": "Organization",
+								"name": "NovusTech"
+							}
+						}
+					},
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"item": {
+							"@type": "Service",
+							"name": "Novus Barber - Sistema para Barbearias",
+							"description": "Sistema de agendamento e gestão para barbearias e salões de beleza com integração WhatsApp e controle completo de clientes.",
+							"provider": {
+								"@type": "Organization",
+								"name": "NovusTech"
+							}
+						}
+					},
+					{
+						"@type": "ListItem",
+						"position": 3,
+						"item": {
+							"@type": "Service",
+							"name": "Criação de Sites Profissionais",
+							"description": "Desenvolvimento de sites modernos, responsivos e otimizados para SEO. Sites personalizados para empresas e negócios.",
+							"provider": {
+								"@type": "Organization",
+								"name": "NovusTech"
+							}
+						}
 					}
-				},
-				{
-					"@type": "ListItem",
-					"position": 2,
-					"item": {
-						"@type": "Service",
-						"name": "Novus Barber - Sistema para Barbearias",
-						"description": "Sistema de agendamento e gestão para barbearias e salões de beleza com integração WhatsApp e controle completo de clientes.",
-						"provider": {"@type": "Organization", "name": "NovusTech"}
-					}
-				},
-				{
-					"@type": "ListItem",
-					"position": 3,
-					"item": {
-						"@type": "Service",
-						"name": "Criação de Sites Profissionais",
-						"description": "Desenvolvimento de sites modernos, responsivos e otimizados para SEO. Sites personalizados para empresas e negócios.",
-						"provider": {"@type": "Organization", "name": "NovusTech"}
-					}
-				}
-			]
-		}
+				]
+			}
 		</script>
-		
+
 		<!-- Schema.org - FAQ (ajuda no SEO) -->
 		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "FAQPage",
-			"mainEntity": [
-				{
-					"@type": "Question",
-					"name": "O que é o Novus CFC?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "O Novus CFC é um sistema completo de gerenciamento para autoescolas, com agendamento de aulas online, controle financeiro, área para alunos e instrutores."
+			{
+				"@context": "https://schema.org",
+				"@type": "FAQPage",
+				"mainEntity": [
+					{
+						"@type": "Question",
+						"name": "O que é o Novus CFC?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "O Novus CFC é um sistema completo de gerenciamento para autoescolas, com agendamento de aulas online, controle financeiro, área para alunos e instrutores."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "Como funciona o sistema para barbearias?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "O Novus Barber oferece agendamento online integrado ao WhatsApp, gestão de clientes, controle de serviços e relatórios completos para sua barbearia."
+						}
+					},
+					{
+						"@type": "Question",
+						"name": "A NovusTech cria sites personalizados?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Sim! Desenvolvemos sites profissionais, modernos e responsivos, personalizados para cada tipo de negócio, com foco em conversão e resultados."
+						}
 					}
-				},
-				{
-					"@type": "Question",
-					"name": "Como funciona o sistema para barbearias?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "O Novus Barber oferece agendamento online integrado ao WhatsApp, gestão de clientes, controle de serviços e relatórios completos para sua barbearia."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "A NovusTech cria sites personalizados?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Sim! Desenvolvemos sites profissionais, modernos e responsivos, personalizados para cada tipo de negócio, com foco em conversão e resultados."
-					}
-				}
-			]
-		}
+				]
+			}
 		</script>
 
 		<!-- Preconnect para performance -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-		
+
 		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-		
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+			rel="stylesheet"
+		/>
+
 		<!-- Theme Script -->
-		<script is:inline>
-			const html = document.documentElement;
-			const theme = localStorage.getItem("theme");
-			if (theme === "dark") {
-				html.setAttribute("data-theme", "dark");
-			} else {
-				html.setAttribute("data-theme", "light");
-			}
-		</script>
-		<script src="site/scripts/tema.js" is:inline></script>	
+		<script src="/scripts/tema.js" is:inline></script>
 	</head>
-	<body class="bg-white text-black dark:bg-zinc-900 dark:text-white font-['Inter',sans-serif] antialiased">
+	<body
+		class="bg-white text-black dark:bg-zinc-900 dark:text-white font-['Inter',sans-serif] antialiased"
+	>
+		<Navbar />
 		<slot />
+		<Footer />
+		<button
+			class="fixed right-5 bottom-5 rounded-full p-4 cursor-pointer h-14 w-14 hover:scale-125 transition-all duration-75 dark:bg-white dark:text-black text-white bg-black"
+			onclick="alterTheme()"
+		>
+			<span class="material-symbols-outlined" id="btn-theme">
+				brightness_2
+			</span>
+		</button>
 	</body>
+	<script is:inline>
+		const html = document.documentElement;
+		const theme = localStorage.getItem("theme");
+		const btnTheme = document.getElementById("btn-theme");
+
+		const alterTheme = () => {
+			localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
+			location.reload();
+		};
+
+		if (theme === "dark") {
+			btnTheme.textContent = "brightness_2";
+			html.setAttribute("data-theme", "dark");
+		} else {
+			btnTheme.textContent = "light_mode";
+			html.setAttribute("data-theme", "light");
+		}
+	</script>
 </html>
 
 <style>

@@ -1,0 +1,51 @@
+# Configuração para Netlify/Vercel - Otimizações de Performance e SEO
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Cache headers para melhorar performance (Lighthouse score)
+[[headers]]
+  for = "/*"
+  
+  [headers.values]
+    # Cache estático por 1 ano
+    Cache-Control = "public, max-age=31536000, immutable"
+    # Segurança HTTPS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # Previne MIME type sniffing
+    X-Content-Type-Options = "nosniff"
+    # XSS Protection
+    X-Frame-Options = "SAMEORIGIN"
+    # CORS für resources
+    Access-Control-Allow-Origin = "*"
+
+# HTML não cache (para página mudar rápido)
+[[headers]]
+  for = "/*.html"
+  
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+# Redirecionar para HTTPS
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+# Redirecionar /novus-cfc para /novus-cfc/ (com trailing slash)
+[[redirects]]
+  from = "/novus-cfc"
+  to = "/novus-cfc/"
+  status = 301
+
+# 404 customizado
+[[redirects]]
+  from = "/*"
+  to = "/404"
+  status = 404
+
+# Configuração Netlify analytics
+[analytics]
+  enabled = true

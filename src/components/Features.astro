@@ -1,0 +1,270 @@
+---
+// Features.astro - Componente de recursos/funcionalidades
+---
+
+<section id="features" class="py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16 animate-fade-in-up">
+      <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+        Funcionalidades Completas para <span class="gradient-text">Alunos, Instrutores e Administração</span>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+        O melhor software de autoescola com todos os recursos: agendamento online, gestão de aulas, controle de veículos, relatórios financeiros e muito mais.
+      </p>
+    </div>
+
+    <!-- Tabs for User Types -->
+    <div class="flex flex-wrap gap-4 justify-center mb-12 animate-fade-in-up" style="animation-delay: 0.1s;">
+      <button class="tab-button active px-8 py-3 bg-[#6f0a59] text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2" data-tab="alunos">
+        <span class="material-symbols-outlined">school</span>
+        Alunos
+      </button>
+      <button class="tab-button px-8 py-3 border-2 border-[#6f0a59] text-[#6f0a59] dark:border-white dark:text-white font-semibold rounded-lg hover:bg-[#6f0a59] hover:text-white dark:hover:bg-white dark:hover:text-[#6f0a59] transition-all duration-300 flex items-center gap-2" data-tab="instrutores">
+        <span class="material-symbols-outlined">person_raised_hand</span>
+        Instrutores
+      </button>
+      <button class="tab-button px-8 py-3 border-2 border-[#6f0a59] text-[#6f0a59] dark:border-white dark:text-white font-semibold rounded-lg hover:bg-[#6f0a59] hover:text-white dark:hover:bg-white dark:hover:text-[#6f0a59] transition-all duration-300 flex items-center gap-2" data-tab="admin">
+        <span class="material-symbols-outlined">admin_panel_settings</span>
+        Administração
+      </button>
+    </div>
+
+    <!-- Tab Content: Alunos -->
+    <div id="tab-alunos" class="tab-content grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 animate-fade-in">
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">smartphone</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Agendamento 24/7</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Marque aulas qualquer hora, em qualquer lugar pelo celular</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">calendar_month</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Calendário Visual</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Veja horários disponíveis em tempo real antes de marcar</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">credit_card</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Saldo em Tempo Real</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Acompanhe quantas aulas você tem disponível e crédito</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">assignment</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Histórico Completo</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Veja todas as aulas realizadas e progresso até agora</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">key</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Alterar Senha</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Segurança total com controle de acesso pessoal</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">edit</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Perfil Pessoal</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Edite seus dados a qualquer momento</p>
+      </div>
+    </div>
+
+    <!-- Tab Content: Instrutores -->
+    <div id="tab-instrutores" class="tab-content hidden grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 animate-fade-in">
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">calendar_month</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Agenda Pessoal</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Visualize todas suas aulas do dia em um painel simples</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">schedule</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Definir Horários</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Configure entrada, saída e horário de almoço</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">block</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Bloqueios Especiais</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Crie exceções para folgas ou compromissos pessoais</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">group</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Gestão de Alunos</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Veja lista de seus alunos vinculados e progresso</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">smartphone</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Marcar para Alunos</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Crie aulas diretamente para seus alunos se necessário</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">notifications</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Notificações</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Receba avisos de novas aulas agendadas</p>
+      </div>
+    </div>
+
+    <!-- Tab Content: Administração -->
+    <div id="tab-admin" class="tab-content hidden grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 animate-fade-in">
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">group</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">CRUD Alunos</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Adicione, edite e gerencie todos os seus alunos facilmente</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">person_raised_hand</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Gestão Instrutores</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Configure categorias, horários e veículos por instrutor</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">directions_car</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Frota de Veículos</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Registre e gerencie todos os veículos da autoescola</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">school</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Gestão de Aulas</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Visualize, edite, troque horários com drag-and-drop</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">attach_money</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Financeiro Completo</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Controle de entradas, saídas, saldo por aluno e relatórios</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">settings</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Configurações Personalizadas</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Defina regras do seu negócio (limites, créditos, alertas)</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">bar_chart</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Relatórios & Excel</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Exporte dados para Excel, crie relatórios personalizados</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">assignment</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Auditoria Completa</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Histórico de quem fez o quê e quando no sistema</p>
+      </div>
+
+      <div class="feature-card bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#6f0a59] transition-all duration-300">
+        <div class="text-4xl mb-4 text-[#6f0a59]"><span class="material-symbols-outlined text-5xl">business</span></div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Multi-Unidade</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm">Gerencie múltiplas autoescolas em um único sistema</p>
+      </div>
+    </div>
+
+    <!-- Key Benefits Bar -->
+    <div class="grid md:grid-cols-4 gap-6 pt-12 border-t border-gray-200 dark:border-gray-700 animate-fade-in" style="animation-delay: 0.3s;">
+      <div class="text-center">
+        <div class="text-4xl font-bold text-[#6f0a59] dark:text-[#ffcd00] mb-2">24/7</div>
+        <p class="text-gray-600 dark:text-gray-400">Acesso sempre disponível</p>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-[#6f0a59] dark:text-[#ffcd00] mb-2">0</div>
+        <p class="text-gray-600 dark:text-gray-400">Conflitos de horário</p>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-[#6f0a59] dark:text-[#ffcd00] mb-2">∞</div>
+        <p class="text-gray-600 dark:text-gray-400">Escalabilidade garantida</p>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-[#6f0a59] dark:text-[#ffcd00] mb-2">100%</div>
+        <p class="text-gray-600 dark:text-gray-400">Segurança de dados</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tab switching functionality
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', function() {
+      const tabName = button.getAttribute('data-tab');
+      
+      // Remove active class from all buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active', 'bg-[#6f0a59]', 'text-white');
+        btn.classList.add('border-2', 'border-[#6f0a59]', 'text-[#6f0a59]');
+      });
+      
+      // Add active class to clicked button
+      button.classList.add('active', 'bg-[#6f0a59]', 'text-white');
+      button.classList.remove('border-2', 'border-[#6f0a59]', 'text-[#6f0a59]');
+      
+      // Hide all tab contents
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      // Show selected tab content
+      const tab = document.getElementById(`tab-${tabName}`)
+      if(tab) {
+        tab.classList.remove('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .gradient-text {
+    background: linear-gradient(135deg, #6f0a59 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :global(.dark) .gradient-text {
+    background: linear-gradient(135deg, #fbbf24 0%, #ffcd00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .feature-card {
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+</style>

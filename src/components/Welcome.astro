@@ -1,102 +1,3 @@
-<!-- Navbar Fixa -->
-<nav
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-  id="navbar"
->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-2 group">
-        <img
-          src={`imgs/logoNovusTechSemFundo.png`}
-          height="45"
-          width="45"
-          alt="Logo NovusTech"
-          class="transition-transform duration-300 group-hover:scale-110"
-        />
-        <span class="text-xl font-bold text-white hidden sm:block"
-          >NovusTech</span
-        >
-      </a>
-
-      <!-- Menu Desktop -->
-      <div class="hidden md:flex items-center gap-8">
-        <a
-          href="#servicos"
-          class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-          >Serviços</a
-        >
-        <a
-          href="#diferenciais"
-          class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-          >Diferenciais</a
-        >
-        <a
-          href="#depoimentos"
-          class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-          >Depoimentos</a
-        >
-        <a
-          href="#faq"
-          class="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-          >FAQ</a
-        >
-        <a
-          href="#contato"
-          class="px-5 py-2.5 bg-white text-primary rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
-        >
-          Contato
-        </a>
-      </div>
-
-      <!-- Botões Mobile -->
-      <div class="flex items-center gap-3">
-        <!-- Menu Mobile Toggle -->
-        <button
-          id="mobile-menu-btn"
-          class="md:hidden bg-white/10 w-12 h-12 justify-center items-center flex rounded-full text-white hover:bg-white/20 transition-all duration-300 cursor-pointer backdrop-blur-sm"
-        >
-          <span class="material-symbols-outlined text-xl">menu</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Menu Mobile -->
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden bg-black/90 backdrop-blur-lg border-t border-white/10"
-  >
-    <div class="px-4 py-6 space-y-4">
-      <a
-        href="#servicos"
-        class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-        >Serviços</a
-      >
-      <a
-        href="#diferenciais"
-        class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-        >Diferenciais</a
-      >
-      <a
-        href="#depoimentos"
-        class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-        >Depoimentos</a
-      >
-      <a
-        href="#faq"
-        class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-        >FAQ</a
-      >
-      <a
-        href="#contato"
-        class="block w-full text-center px-5 py-3 bg-white text-primary rounded-full font-semibold"
-        >Contato</a
-      >
-    </div>
-  </div>
-</nav>
-
 <!-- Hero -->
 <section
   class="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-gradient-to-br from-primary via-primary-dark to-black text-white dark:from-amber-800 dark:via-amber-700 dark:to-gray-900 relative overflow-hidden"
@@ -264,7 +165,7 @@
           </li>
         </ul>
         <a
-          href="#contato"
+          href="/novus-cfc"
           class="inline-flex items-center gap-2 text-primary dark:text-amber-400 font-semibold group-hover:gap-4 transition-all duration-300"
         >
           Saiba mais
@@ -827,96 +728,7 @@
 </section>
 
 <!-- Rodapé -->
-<footer class="py-12 bg-black text-gray-100 border-t border-gray-800">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-      <!-- Logo e descrição -->
-      <div class="md:col-span-2">
-        <div class="flex items-center gap-2 mb-4">
-          <img
-            src={`imgs/logoNovusTechSemFundo.png`}
-            height="40"
-            width="40"
-            alt="Logo NovusTech"
-          />
-          <span class="text-xl font-bold">NovusTech</span>
-        </div>
-        <p class="text-gray-400 mb-4 max-w-sm">
-          Soluções tecnológicas para transformar seu negócio. Sistemas modernos,
-          eficientes e personalizados.
-        </p>
-        <div class="flex gap-4">
-          <a
-            href="#"
-            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
-          >
-            <span class="material-symbols-outlined text-lg">public</span>
-          </a>
-          <a
-            href="#"
-            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
-          >
-            <span class="material-symbols-outlined text-lg">photo_camera</span>
-          </a>
-        </div>
-      </div>
 
-      <!-- Links rápidos -->
-      <div>
-        <h4 class="font-semibold mb-4">Links Rápidos</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li>
-            <a href="#servicos" class="hover:text-white transition-colors"
-              >Serviços</a
-            >
-          </li>
-          <li>
-            <a href="#diferenciais" class="hover:text-white transition-colors"
-              >Diferenciais</a
-            >
-          </li>
-          <li>
-            <a href="#depoimentos" class="hover:text-white transition-colors"
-              >Depoimentos</a
-            >
-          </li>
-          <li>
-            <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Contato -->
-      <div>
-        <h4 class="font-semibold mb-4">Contato</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-sm">phone</span>
-            (17) 99743-7646
-          </li>
-          <li class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-sm">location_on</span>
-            Jales, São Paulo, Brasil
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div
-      class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
-    >
-      <p class="text-gray-500 text-sm">
-        © 2025 NovusTech. Todos os direitos reservados.
-      </p>
-      <div class="flex gap-6 text-gray-500 text-sm">
-        <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
-        <a href="#" class="hover:text-white transition-colors"
-          >Política de Privacidade</a
-        >
-      </div>
-    </div>
-  </div>
-</footer>
 
 <!-- Scripts -->
 <script>
@@ -939,7 +751,7 @@
   const navbar = document.getElementById("navbar");
   const body = document.body;
   body.addEventListener("scroll", () => {
-    console.log(body.scrollTop);
+    // console.log(body.scrollTop);
     if (body.scrollTop > 100) {
       navbar?.classList.add("bg-black/90", "backdrop-blur-lg", "shadow-lg");
     } else {
@@ -968,9 +780,9 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        animarContador("contador-agendamentos", 6000);
+        animarContador("contador-agendamentos", 10000);
         animarContador("contador-sites", 10);
-        animarContador("contador-clientes", 50);
+        animarContador("contador-clientes", 500);
         animarContador("contador-satisfacao", 99);
         observer.disconnect();
       }
