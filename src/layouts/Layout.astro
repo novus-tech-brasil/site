@@ -14,14 +14,14 @@ const {
 	title = "NovusTech | Sistema para Autoescolas, Barbearias e Criação de Sites Profissionais",
 	description = "Especialistas em sistema para autoescolas (Novus CFC), sistema para barbearias (Novus Barber) e desenvolvimento de sites profissionais. Agendamento via WhatsApp, gestão completa e soluções sob medida para seu negócio.",
 	keywords = "sistema para autoescola, software autoescola, sistema CFC, gestão de autoescola, agendamento aulas autoescola, sistema para barbearia, software barbearia, agendamento barbearia, criação de sites, desenvolvimento de sites, sites profissionais",
-	ogImage = "/imgs/logoNovusTech.png"
+	ogImage = "/imgs/logoNovusTech.png",
 } = Astro.props;
 
 // Detectar página para meta tags dinâmicas
 const currentPath = Astro.url.pathname;
-const isNovusCFC = currentPath.includes('novus-cfc');
-const pageTitle = isNovusCFC 
-	? `Novus CFC - Software de Autoescola | Sistema Agendamento Online 24/7` 
+const isNovusCFC = currentPath.includes("novus-cfc");
+const pageTitle = isNovusCFC
+	? `Novus CFC - Software de Autoescola | Sistema Agendamento Online 24/7`
 	: title;
 ---
 
