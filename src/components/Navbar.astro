@@ -51,7 +51,7 @@
             </div>
 
             <!-- Botões Mobile -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 md:">
                 <!-- Menu Mobile Toggle -->
                 <button
                     id="mobile-menu-btn"
@@ -64,37 +64,39 @@
     </div>
 
     <!-- Menu Mobile -->
-    <div
-        id="mobile-menu"
-        class="hidden md:hidden bg-black/90 backdrop-blur-lg border-t border-white/10"
-    >
-        <div class="px-4 py-6 space-y-4" id="mobile-menu-content">
-            <!-- Links será populado dinamicamente -->
-            <a
-                href="#servicos"
-                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-                >Serviços</a
-            >
-            <a
-                href="#diferenciais"
-                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-                >Diferenciais</a
-            >
-            <a
-                href="#depoimentos"
-                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-                >Depoimentos</a
-            >
-            <a
-                href="#faq"
-                class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
-                >FAQ</a
-            >
-            <a
-                href="#contato"
-                class="block w-full text-center px-5 py-3 bg-white text-primary rounded-full font-semibold"
-                >Contato</a
-            >
+    <div class="md:hidden">
+        <div
+            id="mobile-menu"
+            class="hidden bg-black/90 backdrop-blur-lg border-t border-white/10"
+        >
+            <div class="px-4 py-6 space-y-4" id="mobile-menu-content">
+                <!-- Links será populado dinamicamente -->
+                <a
+                    href="#servicos"
+                    class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                    >Serviços</a
+                >
+                <a
+                    href="#diferenciais"
+                    class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                    >Diferenciais</a
+                >
+                <a
+                    href="#depoimentos"
+                    class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                    >Depoimentos</a
+                >
+                <a
+                    href="#faq"
+                    class="block text-white/80 hover:text-white transition-colors py-2 font-medium"
+                    >FAQ</a
+                >
+                <a
+                    href="#contato"
+                    class="block w-full text-center px-5 py-3 bg-white text-primary rounded-full font-semibold"
+                    >Contato</a
+                >
+            </div>
         </div>
     </div>
 </nav>
@@ -105,14 +107,17 @@
     const navbar = document.getElementById("navbar");
     const desktopMenu = document.getElementById("desktop-menu");
     const mobileMenuContent = document.getElementById("mobile-menu-content");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 
     // Definir links baseado na página
+
     const homeLinks = [
         { href: "#servicos", label: "Serviços" },
         { href: "#diferenciais", label: "Diferenciais" },
         { href: "#depoimentos", label: "Depoimentos" },
         { href: "#faq", label: "FAQ" },
-        { href: "#contato", label: "Contato", cta: true }
+        { href: "#contato", label: "Contato", cta: true },
     ];
 
     const novuscfcLinks = [
@@ -121,45 +126,42 @@
         { href: "#recursos", label: "Recursos" },
         { href: "#depoimentos", label: "Depoimentos" },
         { href: "#tecnologia", label: "Tecnologia" },
-        { href: "#contato", label: "Contato", cta: true }
+        { href: "#contato", label: "Contato", cta: true },
     ];
 
     const links = location === "/novus-cfc" ? novuscfcLinks : homeLinks;
 
-    // Renderizar menu desktop
-    if (desktopMenu) {
-        desktopMenu.innerHTML = links.map(link => {
+    desktopMenu.innerHTML = links
+        .map((link) => {
             if (link.cta) {
                 return `<a href="${link.href}" class="px-5 py-2.5 bg-white text-primary rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg">${link.label}</a>`;
             }
-            return `<a href="${link.href}" class="text-white/80 hover:text-white transition-colors duration-300 font-medium flex items-center gap-1">${link?.icon ? `<span class="material-symbols-outlined text-lg">${link?.icon}</span>` : ''}${link.label}</a>`;
-        }).join("");
-    }
+            return `<a href="${link.href}" class="text-white/80 hover:text-white transition-colors duration-300 font-medium flex items-center gap-1">${link?.icon ? `<span class="material-symbols-outlined text-lg">${link?.icon}</span>` : ""}${link.label}</a>`;
+        })
+        .join("");
+
+    mobileMenuBtn?.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
 
     // Renderizar menu mobile
     if (mobileMenuContent) {
-        mobileMenuContent.innerHTML = links.map(link => {
-            if (link.cta) {
-                return `<a href="${link.href}" class="block w-full text-center px-5 py-3 bg-white text-primary rounded-full font-semibold">${link.label}</a>`;
-            }
-            return `<a href="${link.href}" class="block text-white/80 hover:text-white transition-colors py-2 font-medium">${link.label}</a>`;
-        }).join("");
+        mobileMenuContent.innerHTML = links
+            .map((link) => {
+                if (link.cta) {
+                    return `<a href="${link.href}" class="block w-full text-center px-5 py-3 bg-white text-primary rounded-full font-semibold">${link.label}</a>`;
+                }
+                return `<a href="${link.href}" class="block text-white/80 hover:text-white transition-colors py-2 font-medium">${link.label}</a>`;
+            })
+            .join("");
     }
 
     // Estilo navbar no Novus CFC
-    if(location === "/novus-cfc" && navbar) {
+    if (location === "/novus-cfc" && navbar) {
         navbar.classList.add("bg-[rgba(0,0,0,0.9)]", "backdrop-blur-sm");
     }
 
     // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-    };
 
     // Navbar background on scroll
     window.addEventListener("scroll", () => {

@@ -732,31 +732,13 @@
 
 <!-- Scripts -->
 <script>
-  // Mobile menu toggle
-  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  // Close mobile menu on link click (Navbar toggle handled in Navbar.astro)
   const mobileMenu = document.getElementById("mobile-menu");
-
-  mobileMenuBtn?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
-  });
-
-  // Close mobile menu on link click
+  
   mobileMenu?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu?.classList.add("hidden");
     });
-  });
-
-  // Navbar scroll effect
-  const navbar = document.getElementById("navbar");
-  const body = document.body;
-  body.addEventListener("scroll", () => {
-    // console.log(body.scrollTop);
-    if (body.scrollTop > 100) {
-      navbar?.classList.add("bg-black/90", "backdrop-blur-lg", "shadow-lg");
-    } else {
-      navbar?.classList.remove("bg-black/90", "backdrop-blur-lg", "shadow-lg");
-    }
   });
 
   // Contador animado
@@ -766,7 +748,7 @@
 
     let inicio = 0;
     const incremento = Math.ceil(valorFinal / (duracao / 16));
-    const intervalo = setInterval(() => {
+    const intervalo = setInterval(() => {   
       inicio += incremento;
       if (inicio >= valorFinal) {
         el.innerText = valorFinal.toLocaleString("pt-BR");
