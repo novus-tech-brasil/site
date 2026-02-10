@@ -1,7 +1,7 @@
 ---
 // Astro layout
 import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer.astro";
 interface Props {
 	title?: string;
@@ -202,7 +202,7 @@ const pageTitle = isNovusCFC
 	<body
 		class="bg-white text-black dark:bg-zinc-900 dark:text-white font-['Inter',sans-serif] antialiased"
 	>
-		<Navbar />
+		<Navbar client:load />
 		<slot />
 		<Footer />
 		<button

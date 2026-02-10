@@ -26,13 +26,13 @@
     </div>
   </div>
 
-  <div class="relative z-10 max-w-5xl mx-auto py-20 md:py-0">
+  <div class="relative z-10 max-w-5xl mx-auto py-20 md:py-0 scale-75">
     <!-- Badge -->
     <div
       class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8 border border-white/20"
     >
       <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-      <span class="text-sm font-medium">+6.000 agendamentos realizados</span>
+      <span class="text-sm font-medium">+10.000 agendamentos realizados</span>
     </div>
 
     <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
@@ -732,15 +732,6 @@
 
 <!-- Scripts -->
 <script>
-  // Close mobile menu on link click (Navbar toggle handled in Navbar.astro)
-  const mobileMenu = document.getElementById("mobile-menu");
-  
-  mobileMenu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu?.classList.add("hidden");
-    });
-  });
-
   // Contador animado
   function animarContador(elemento: any, valorFinal: any, duracao = 2000) {
     const el = document.getElementById(elemento);
