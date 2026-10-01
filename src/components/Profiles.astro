@@ -1,0 +1,56 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+	current?: string;
+	heading?: string;
+	eyebrow?: string;
+}
+
+const { current = "", eyebrow = "Para quem é o Novus CFC", heading = "Qual é o seu <em>perfil?</em>" } = Astro.props;
+
+const profiles = [
+	{
+		id: "autoescolas",
+		href: "/autoescolas",
+		icon: "calendar",
+		title: "Autoescolas e CFCs",
+		text: "Agenda, alunos, instrutores e veículos em uma única operação.",
+	},
+	{
+		id: "instrutores",
+		href: "/instrutores-autonomos",
+		icon: "instructor",
+		title: "Instrutores autônomos",
+		text: "Sua agenda, seus alunos e o histórico de aulas organizados, sem planilha.",
+	},
+	{
+		id: "alunos",
+		href: "/minhas-aulas",
+		icon: "phone",
+		title: "Controle das suas aulas",
+		text: "Saiba quantas aulas já fez, quantas faltam e quando é a próxima.",
+	},
+].filter((profile) => profile.id !== current);
+---
+
+<section class="section profiles" aria-labelledby="profiles-title">
+	<div class="wrap">
+		<header class="head reveal">
+			<p class="eyebrow">{eyebrow}</p>
+			<h2 id="profiles-title" set:html={heading} />
+		</header>
+		<div class:list={["profiles-grid", { "profiles-two": profiles.length === 2 }]}>
+			{profiles.map((profile, index) => (
+				<a class="card spot reveal profile-card" href={profile.href} style={`--d:${index * 80}ms`}>
+					<span class="card-icon"><Icon name={profile.icon} size={18} /></span>
+					<span class="profile-text">
+						<b>{profile.title}</b>
+						<small>{profile.text}</small>
+					</span>
+					<span class="profile-go">Conhecer <Icon name="arrow" size={16} /></span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>

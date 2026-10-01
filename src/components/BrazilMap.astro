@@ -1,0 +1,147 @@
+---
+import { brazilStates, BRAZIL_VIEWBOX } from "../data/brazil-map";
+import { coverage, type CoverageType } from "../data/coverage";
+import { stats } from "../data/company";
+
+interface Props {
+	eyebrow?: string;
+	heading?: string;
+	lead?: string;
+}
+
+const {
+	eyebrow = "Presença no Brasil",
+	heading = "Nossa presença <em>pelo Brasil.</em>",
+	lead = "Autoescolas, instrutores autônomos e usuários em cada estado. Passe o mouse (ou toque) em um estado para ver os números.",
+} = Astro.props;
+
+// Escala de roxo (do mais claro ao mais escuro). Cor sólida por nível; 0 = sem clientes.
+const EMPTY = "#ebe5e9";
+const LEVELS = ["#efd9e8", "#d4a3c8", "#aa5d9a", "#6f0a59", "#2b0a25"];
+
+const types: { key: CoverageType; tab: string; unit: string; total: string }[] = [
+	{ key: "autoescolas", tab: "Autoescolas", unit: "autoescolas", total: `${stats.autoescolas.prefix}${stats.autoescolas.value.toLocaleString("pt-BR")}` },
+	{ key: "instrutores", tab: "Instrutores autônomos", unit: "instrutores autônomos", total: `${stats.instrutores.prefix}${stats.instrutores.value.toLocaleString("pt-BR")}` },
+	{ key: "usuarios", tab: "Usuários", unit: "usuários", total: `${stats.alunos.prefix}${stats.alunos.value.toLocaleString("pt-BR")}` },
+];
+
+const count = (uf: string, key: CoverageType) => coverage[uf]?.[key] ?? 0;
+const maxOf = Object.fromEntries(types.map(({ key }) => [key, Math.max(1, ...brazilStates.map((s) => count(s.uf, key)))])) as Record<CoverageType, number>;
+const colorFor = (uf: string, key: CoverageType) => {
+	const n = count(uf, key);
+	if (!n) return EMPTY;
+	return LEVELS[Math.min(LEVELS.length - 1, Math.floor((n / maxOf[key]) * LEVELS.length))];
+};
+const fmt = (n: number) => n.toLocaleString("pt-BR");
+
+const top = Object.fromEntries(
+	types.map(({ key }) => [
+		key,
+		brazilStates
+			.map((s) => ({ ...s, n: count(s.uf, key) }))
+			.filter((s) => s.n > 0)
+			.sort((a, b) => b.n - a.n),
+	]),
+) as Record<CoverageType, (typeof brazilStates[number] & { n: number })[]>;
+---
+
+<section class="section brmap-section" id="mapa" aria-labelledby="brmap-title">
+	<div class="wrap">
+		<header class="head reveal">
+			<p class="eyebrow">{eyebrow}</p>
+			<h2 id="brmap-title" set:html={heading} />
+			<p class="lead">{lead}</p>
+		</header>
+
+		<div class="brmap reveal" data-tabgroup data-active="1">
+			<div class="brmap-stage">
+				<svg class="brmap-svg" viewBox={BRAZIL_VIEWBOX} role="group" aria-label="Mapa do Brasil com a presença do Novus CFC por estado">
+					<g transform="scale(0.0001,-0.0001)">
+						{brazilStates.map((state) => {
+							const a = count(state.uf, "autoescolas");
+							const i = count(state.uf, "instrutores");
+							const u = count(state.uf, "usuarios");
+							return (
+								<path
+									class="st"
+									d={state.d}
+									tabindex="0"
+									role="img"
+									aria-label={`${state.name}: ${fmt(a)} autoescolas, ${fmt(i)} instrutores autônomos, ${fmt(u)} usuários`}
+									data-name={state.name}
+									data-uf={state.uf}
+									data-a={a}
+									data-i={i}
+									data-u={u}
+									style={`--ca:${colorFor(state.uf, "autoescolas")};--ci:${colorFor(state.uf, "instrutores")};--cu:${colorFor(state.uf, "usuarios")}`}
+								/>
+							);
+						})}
+					</g>
+				</svg>
+			</div>
+
+			<div class="brmap-side">
+				<div class="brmap-tabs" role="tablist" aria-label="Tipo de cliente no mapa">
+					{types.map((type, index) => (
+						<button type="button" role="tab" id={`brtab-${type.key}`} aria-selected={index === 0 ? "true" : "false"} aria-controls={`brpanel-${type.key}`} data-tab>
+							<b>{type.total}</b>
+							<span>{type.tab}</span>
+						</button>
+					))}
+				</div>
+
+				<div class="brmap-readout" aria-live="polite" data-readout>
+					<p class="kicker">Estado</p>
+					<b data-readout-name>Passe o mouse em um estado</b>
+					<ul>
+						<li><span>Autoescolas</span><b data-readout-a>—</b></li>
+						<li><span>Instrutores autônomos</span><b data-readout-i>—</b></li>
+						<li><span>Usuários</span><b data-readout-u>—</b></li>
+					</ul>
+				</div>
+
+				{types.map((type, index) => (
+					<div class="brmap-top" role="tabpanel" id={`brpanel-${type.key}`} aria-labelledby={`brtab-${type.key}`} data-panel hidden={index !== 0}>
+						<p class="kicker">Estados com mais {type.unit}</p>
+						<ol>
+							{top[type.key].slice(0, 5).map((state) => (
+								<li><span>{state.name}</span><b>{fmt(state.n)}</b></li>
+							))}
+						</ol>
+					</div>
+				))}
+
+				<div class="brmap-legend" aria-hidden="true">
+					<span>Menos</span>
+					{[EMPTY, ...LEVELS].map((color) => <i style={`background:${color}`}></i>)}
+					<span>Mais</span>
+				</div>
+			</div>
+		</div>
+		<p class="photo-credit">Malha territorial: IBGE</p>
+	</div>
+</section>
+
+<script>
+	document.querySelectorAll<HTMLElement>(".brmap").forEach((root) => {
+		const name = root.querySelector<HTMLElement>("[data-readout-name]");
+		const a = root.querySelector<HTMLElement>("[data-readout-a]");
+		const i = root.querySelector<HTMLElement>("[data-readout-i]");
+		const u = root.querySelector<HTMLElement>("[data-readout-u]");
+		const fmt = (value?: string) => Number(value || 0).toLocaleString("pt-BR");
+		const show = (state: SVGElement) => {
+			root.querySelectorAll(".st.is-hover").forEach((el) => el.classList.remove("is-hover"));
+			state.classList.add("is-hover");
+			if (name) name.textContent = `${state.dataset.name} (${state.dataset.uf})`;
+			if (a) a.textContent = fmt(state.dataset.a);
+			if (i) i.textContent = fmt(state.dataset.i);
+			if (u) u.textContent = fmt(state.dataset.u);
+		};
+		root.querySelectorAll<SVGElement>(".st").forEach((state) => {
+			state.addEventListener("pointerenter", () => show(state));
+			state.addEventListener("focus", () => show(state));
+			state.addEventListener("click", () => show(state));
+		});
+	});
+</script>

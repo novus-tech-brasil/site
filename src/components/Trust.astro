@@ -1,0 +1,24 @@
+---
+import Icon from "./Icon.astro";
+import { company } from "../data/company";
+---
+
+<section class="trust" aria-labelledby="trust-title">
+  <div class="wrap">
+    <div class="trust-card reveal">
+      <div class="trust-id">
+        <span class="trust-seal"><Icon name="shield" size={26} stroke={1.8} /></span>
+        <div>
+          <p class="eyebrow" id="trust-title">Quem está por trás</p>
+          <h2>Uma empresa de verdade,<br /><em>com CNPJ e atendimento direto.</em></h2>
+        </div>
+      </div>
+      <dl class="trust-data">
+        <div><dt>Empresa</dt><dd>{company.name}</dd></div>
+        <div class="trust-cnpj"><dt>CNPJ</dt><dd><span data-copy-text={company.cnpj}>{company.cnpj}</span><button type="button" class="copy-btn" data-copy={company.cnpj} aria-label="Copiar CNPJ"><span data-copy-label>Copiar</span></button></dd></div>
+        <div><dt>Produto</dt><dd>{company.product}</dd></div>
+        <div><dt>Atendimento</dt><dd><a href={company.phoneHref}>{company.phone}</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>

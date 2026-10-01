@@ -1,0 +1,88 @@
+---
+import AudiencePage from "../components/AudiencePage.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<AudiencePage
+	current="instrutores"
+	seo={{
+		title: "Agenda para Instrutor Autônomo de Direção | Novus CFC",
+		description: "Organize alunos, horários e histórico de aulas de direção sem planilha. Mais de 80 instrutores autônomos usam o Novus CFC. Fale com a equipe.",
+		path: "/instrutores-autonomos",
+		ogImage: "/imgs/og-instrutores.png",
+		crumb: "Instrutores autônomos",
+		audience: "Instrutores autônomos de direção",
+	}}
+	hero={{
+		eyebrow: "Para instrutores autônomos",
+		titleHtml: "Sua agenda de aulas organizada,<br /><em>sem planilha e sem mensagem perdida.</em>",
+		sub: "Controle seus alunos, horários e histórico de aulas em um só lugar — e deixe o aluno pedir aula pelo celular, sem você precisar anotar tudo à mão.",
+		cta: "Quero conhecer o Novus CFC",
+		note: "Mais de 80 instrutores autônomos já organizam suas aulas com o Novus CFC",
+	}}
+	message="Olá! Sou instrutor autônomo e quero conhecer o Novus CFC."
+	caption="Prévia ilustrativa com dados de exemplo."
+	versus={{
+		beforeLabel: "A rotina do instrutor autônomo",
+		headingHtml: "Você ensina a dirigir.<br /><em>O sistema cuida da organização.</em>",
+		lead: "Quem trabalha sozinho acaba sendo instrutor, recepção e secretaria ao mesmo tempo. Dá para tirar boa parte desse peso das costas.",
+		before: [
+			"Agenda no caderno ou espalhada em conversas",
+			"Aluno remarcando por mensagem a toda hora",
+			"Difícil lembrar quantas aulas cada aluno já fez",
+			"Horários que se sobrepõem sem você perceber",
+		],
+		after: [
+			"Agenda do dia clara, no celular ou no computador",
+			"O aluno solicita a aula e você organiza com calma",
+			"Histórico e andamento de cada aluno reunidos",
+			"Visão dos seus horários para não marcar em cima",
+		],
+	}}
+	featuresHeadingHtml="Menos anotação,<br /><em>mais tempo para dar aula.</em>"
+	featuresLead="O essencial da rotina de quem trabalha por conta própria."
+	features={[
+		{ icon: "calendar", title: "Agenda do dia", text: "Veja seus horários e compromissos de forma simples, sem depender de caderno." },
+		{ icon: "users", title: "Seus alunos em um lugar", text: "Cadastro e histórico de aulas de cada aluno reunidos para consulta rápida." },
+		{ icon: "book", title: "Histórico e saldo de aulas", text: "Acompanhe quantas aulas cada aluno já fez e quantas ainda faltam." },
+		{ icon: "phone", title: "Pedido de aula pelo celular", text: "O aluno consulta as opções e envia a solicitação direto para você." },
+		{ icon: "clock", title: "Horários sob controle", text: "Enxergue o que já está marcado e evite horários sobrepostos." },
+		{ icon: "globe", title: "Acesso pelo navegador", text: "Sistema web: acompanhe sua agenda de onde estiver, sem instalar nada." },
+	]}
+	stepsHeadingHtml="Comece a organizar<br /><em>em três passos.</em>"
+	steps={[
+		{ title: "Fale com a equipe", text: "Conte como é a sua rotina e veja como o Novus CFC se encaixa nela." },
+		{ title: "Cadastre seus alunos e horários", text: "Reúna alunos e agenda em um só lugar, no seu ritmo." },
+		{ title: "Acompanhe o andamento", text: "Veja o dia, o histórico de aulas e as solicitações dos alunos." },
+	]}
+	faqs={[
+		{ question: "O Novus CFC é para instrutor autônomo?", answer: "Esta página mostra como o sistema ajuda quem trabalha por conta própria a organizar agenda, alunos e histórico de aulas. Fale com a equipe pelo WhatsApp para entender como ele se adapta à sua rotina." },
+		{ question: "Meus alunos conseguem pedir aula pelo celular?", answer: "Sim. O aluno consulta as opções disponibilizadas e solicita aulas pelo celular, conforme a disponibilidade que você definir." },
+		{ question: "Preciso instalar alguma coisa?", answer: "O Novus CFC é um sistema web, acessado pelo navegador. A equipe explica o acesso na conversa inicial." },
+		{ question: "Quantos instrutores autônomos usam o Novus CFC?", answer: "Mais de 80 instrutores autônomos já organizam suas aulas com o Novus CFC." },
+		{ question: "Como organizar a agenda de aulas de direção sendo instrutor autônomo?", answer: "Reúna em um só lugar seus alunos, os horários combinados e o histórico de aulas de cada um. Assim você enxerga o dia, evita marcar em cima de outro horário e sabe em que ponto cada aluno está. É isso que o Novus CFC ajuda a fazer." },
+		{ question: "Quanto custa?", answer: "Os valores são apresentados na conversa com a equipe, de acordo com a sua necessidade." },
+	]}
+	finalHtml="Organize suas aulas<br /><em>do jeito mais simples.</em>"
+	finalSub="Converse com a equipe pelo WhatsApp e veja como o Novus CFC funciona para você."
+>
+	<div slot="visual">
+		<div class="showcase">
+			<div class="sheet">
+				<div class="mini-top"><b>Agenda do instrutor</b><span>Hoje</span></div>
+				<div class="mini-row"><span class="mono">08:00</span><i class="bar plum"></i><span class="grow"><b>Marina Alves</b><small>Categoria B · 8 de 20 aulas</small></span><i class="tag ok">Confirmada</i></div>
+				<div class="mini-row"><span class="mono">10:00</span><i class="bar orange"></i><span class="grow"><b>Bruna Lima</b><small>Categoria B · 18 de 20 aulas</small></span><i class="tag ok">Confirmada</i></div>
+				<div class="mini-row"><span class="mono">14:00</span><i class="bar yellow"></i><span class="grow"><b>Caio Mendes</b><small>Categoria B · 3 de 20 aulas</small></span><i class="tag wait">Solicitada</i></div>
+				<div class="mini-row"><span class="mono">16:30</span><i class="bar plum"></i><span class="grow"><b>Horário livre</b><small>Disponível para novos pedidos</small></span><i class="tag">Livre</i></div>
+			</div>
+			<div class="phone">
+				<div class="phone-notch"></div>
+				<p class="kicker">Novo pedido de aula</p>
+				<h4>Rafael Costa</h4>
+				<div class="select"><small>Categoria</small><b>Moto · Categoria A</b></div>
+				<div class="slots"><span class="on">09:00</span><span>10:30</span><span>14:00</span></div>
+				<div class="fake-btn fake-block">Solicitar aula <Icon name="arrow" size={14} stroke={2.4} /></div>
+			</div>
+		</div>
+	</div>
+</AudiencePage>

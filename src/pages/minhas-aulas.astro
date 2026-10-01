@@ -1,0 +1,88 @@
+---
+import AudiencePage from "../components/AudiencePage.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<AudiencePage
+	current="alunos"
+	seo={{
+		title: "Controle de Aulas de Direção: saldo e histórico | Novus CFC",
+		description: "Saiba quantas aulas de direção você já fez, quantas faltam e quando é a próxima. Acompanhe tudo pelo celular com o Novus CFC.",
+		path: "/minhas-aulas",
+		ogImage: "/imgs/og-minhas-aulas.png",
+		crumb: "Minhas aulas",
+		audience: "Alunos de autoescola e pessoas aprendendo a dirigir",
+	}}
+	hero={{
+		eyebrow: "Para quem está aprendendo a dirigir",
+		titleHtml: "Suas aulas de direção<br /><em>sob o seu controle.</em>",
+		sub: "Acompanhe quantas aulas você já fez, quantas ainda faltam e quando é a próxima — direto no celular, sem depender de anotação ou de mensagem.",
+		cta: "Quero controlar minhas aulas",
+		note: "Conversa direta pelo WhatsApp",
+	}}
+	message="Olá! Quero controlar minhas próprias aulas de direção com o Novus CFC."
+	caption="Prévia ilustrativa com dados de exemplo."
+	versus={{
+		beforeLabel: "Quem está aprendendo a dirigir",
+		headingHtml: "Chega de perder a conta<br /><em>das suas aulas.</em>",
+		lead: "Entre horários combinados, remarcações e aulas já feitas, é fácil se confundir. Dá para ter tudo à mão.",
+		before: [
+			"Perder a conta de quantas aulas já fez",
+			"Esquecer o dia e o horário da próxima aula",
+			"Combinar tudo por mensagem e depois procurar na conversa",
+			"Não saber quantas aulas ainda faltam",
+		],
+		after: [
+			"Saldo de aulas sempre visível",
+			"Próxima aula e histórico em um só lugar",
+			"Pedido de nova aula direto pelo celular",
+			"Clareza de quanto já avançou e quanto falta",
+		],
+	}}
+	featuresHeadingHtml="Tudo sobre as suas aulas,<br /><em>na palma da mão.</em>"
+	featuresLead="Informação simples, no celular, quando você precisar."
+	features={[
+		{ icon: "book", title: "Saldo de aulas", text: "Veja quantas aulas você já fez e quantas ainda faltam." },
+		{ icon: "clock", title: "Histórico de aulas", text: "Consulte as aulas anteriores sem precisar procurar em conversas." },
+		{ icon: "calendar", title: "Próximas aulas", text: "Saiba o dia e o horário do seu próximo compromisso." },
+		{ icon: "phone", title: "Peça aulas pelo celular", text: "Consulte as opções disponíveis e envie a solicitação em poucos toques." },
+		{ icon: "chart", title: "Seu progresso", text: "Acompanhe o andamento do seu aprendizado de forma visual." },
+		{ icon: "globe", title: "Sem instalar nada", text: "Acesso pelo navegador do celular, quando e onde quiser." },
+	]}
+	stepsHeadingHtml="Comece a acompanhar<br /><em>em três passos.</em>"
+	steps={[
+		{ title: "Fale com a equipe", text: "Conte como você faz suas aulas hoje e veja como o Novus CFC se encaixa." },
+		{ title: "Registre suas aulas", text: "Reúna saldo, histórico e próximas aulas em um lugar só." },
+		{ title: "Acompanhe pelo celular", text: "Veja o que já fez, o que falta e peça novas aulas quando precisar." },
+	]}
+	faqs={[
+		{ question: "Como funciona para quem quer controlar as próprias aulas?", answer: "O Novus CFC reúne saldo, histórico e próximas aulas em um só lugar, acessível pelo celular. Fale com a equipe pelo WhatsApp para entender como isso funciona no seu caso." },
+		{ question: "Preciso estar em uma autoescola que usa o Novus CFC?", answer: "Depende da sua situação. Chame a equipe no WhatsApp e explique como você faz suas aulas — assim indicamos o melhor caminho." },
+		{ question: "Consigo pedir aulas pelo celular?", answer: "Sim. O aluno consulta as opções disponibilizadas e solicita aulas pelo celular, conforme a disponibilidade configurada." },
+		{ question: "Como saber quantas aulas de direção eu já fiz?", answer: "Registrando cada aula feita e comparando com o total que você contratou. Com o saldo e o histórico de aulas em um só lugar, essa conta fica sempre visível, sem precisar procurar em conversas ou anotações." },
+		{ question: "Como acompanhar minhas aulas de direção pelo celular?", answer: "O Novus CFC reúne saldo, histórico e próxima aula em um sistema web, acessado pelo navegador do celular. Fale com a equipe pelo WhatsApp para ver como isso funciona no seu caso." },
+		{ question: "Preciso instalar algum aplicativo?", answer: "O Novus CFC é um sistema web, acessado pelo navegador do celular ou do computador." },
+	]}
+	finalHtml="Tenha suas aulas<br /><em>sempre à mão.</em>"
+	finalSub="Chame a equipe no WhatsApp e veja como acompanhar suas aulas de direção."
+>
+	<div slot="visual">
+		<div class="showcase">
+			<div class="phone">
+				<div class="phone-notch"></div>
+				<p class="kicker">Novus CFC · Minhas aulas</p>
+				<h4>Olá, Marina</h4>
+				<div class="phone-balance"><span><small>Aulas feitas</small><b>08 / 20</b></span><div class="ring ring-sm" style="--v:40"><b>40%</b></div></div>
+				<p class="phone-label">Próxima aula</p>
+				<div class="select"><small>Quarta-feira</small><b>10:00 · Carro · Categoria B</b></div>
+				<div class="fake-btn fake-block">Pedir nova aula <Icon name="arrow" size={14} stroke={2.4} /></div>
+			</div>
+			<div class="sheet">
+				<div class="mini-top"><b>Histórico de aulas</b><span>Exemplo</span></div>
+				<div class="mini-row"><span class="mono">Seg</span><i class="bar plum"></i><span class="grow"><b>Aula 08</b><small>08:00 · Carro 02</small></span><i class="tag ok">Feita</i></div>
+				<div class="mini-row"><span class="mono">Sex</span><i class="bar orange"></i><span class="grow"><b>Aula 07</b><small>10:00 · Carro 01</small></span><i class="tag ok">Feita</i></div>
+				<div class="mini-row"><span class="mono">Qua</span><i class="bar yellow"></i><span class="grow"><b>Aula 09</b><small>10:00 · Carro 02</small></span><i class="tag wait">Agendada</i></div>
+			</div>
+		</div>
+	</div>
+</AudiencePage>

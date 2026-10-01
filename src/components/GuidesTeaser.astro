@@ -1,0 +1,30 @@
+---
+import Icon from "./Icon.astro";
+import { guides } from "../data/guides";
+
+interface Props {
+	exclude?: string;
+	heading?: string;
+}
+
+const { exclude = "", heading = "Guias práticos para <em>organizar suas aulas.</em>" } = Astro.props;
+const items = guides.filter((guide) => guide.slug !== exclude);
+---
+
+<section class="section guides-teaser" aria-labelledby="guides-title">
+	<div class="wrap">
+		<header class="head reveal">
+			<p class="eyebrow">Guias</p>
+			<h2 id="guides-title" set:html={heading} />
+		</header>
+		<div class="guides-grid">
+			{items.map((guide, index) => (
+				<a class="card spot reveal guide-card" href={`/guias/${guide.slug}`} style={`--d:${index * 80}ms`}>
+					<span class="card-icon"><Icon name="book" size={18} /></span>
+					<span class="guide-text"><b>{guide.title}</b><small>{guide.excerpt}</small></span>
+					<span class="profile-go">Ler guia · {guide.readMinutes} min <Icon name="arrow" size={16} /></span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>

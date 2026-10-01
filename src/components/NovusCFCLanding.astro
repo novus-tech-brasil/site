@@ -1,0 +1,470 @@
+---
+import Icon from "./Icon.astro";
+import { company } from "../data/company";
+import Numbers from "./Numbers.astro";
+import Trust from "./Trust.astro";
+import Profiles from "./Profiles.astro";
+import GuidesTeaser from "./GuidesTeaser.astro";
+import PhotoBand from "./PhotoBand.astro";
+import BrazilMap from "./BrazilMap.astro";
+
+const description = "Organize agenda, alunos, instrutores e veículos em uma única operação com o Novus CFC — gestão feita para a rotina da sua autoescola.";
+const whatsapp = company.whatsapp;
+
+const initials = (name: string) => name.split(" ").map((part) => part[0]).join("").slice(0, 2);
+
+const schedule = [
+  { time: "08:00", name: "Marina Alves", instructor: "Paulo Silva", vehicle: "Carro 02", status: "Confirmada", tone: "ok" },
+  { time: "09:00", name: "Rafael Costa", instructor: "Luana Reis", vehicle: "Moto 01", status: "Solicitada", tone: "wait" },
+  { time: "10:00", name: "Bruna Lima", instructor: "Paulo Silva", vehicle: "Carro 01", status: "Confirmada", tone: "ok" },
+  { time: "11:00", name: "Caio Mendes", instructor: "Luana Reis", vehicle: "Carro 03", status: "Confirmada", tone: "ok" },
+];
+
+const students = [
+  { name: "Marina Alves", category: "Categoria B", done: 8, total: 20, status: "Em andamento", tone: "plum" },
+  { name: "Rafael Costa", category: "Categoria A", done: 12, total: 20, status: "Em andamento", tone: "orange" },
+  { name: "Bruna Lima", category: "Categoria B", done: 18, total: 20, status: "Quase concluído", tone: "yellow" },
+];
+
+const fleet = [
+  { code: "01", name: "Carro 01", detail: "Categoria B · Paulo", state: "Em aula", tone: "busy" },
+  { code: "02", name: "Carro 02", detail: "Categoria B · Livre às 10:00", state: "Disponível", tone: "ready" },
+  { code: "03", name: "Moto 01", detail: "Categoria A · Luana", state: "Em aula", tone: "busy" },
+  { code: "04", name: "Carro 03", detail: "Categoria B · Livre às 11:00", state: "Disponível", tone: "ready" },
+];
+
+const marquee = ["Agenda de aulas", "Cadastro de alunos", "Instrutores", "Frota de veículos", "Agendamento pelo celular", "Histórico de aulas", "Saldo de aulas", "Visão da operação"];
+
+const before = [
+  "Agenda no caderno, na planilha ou na cabeça",
+  "Pedidos de aula perdidos no meio das conversas",
+  "Instrutor e veículo disputando o mesmo horário",
+  "Histórico do aluno espalhado em vários lugares",
+];
+const after = [
+  "Uma agenda única, visível para toda a equipe",
+  "O aluno solicita a aula direto pelo celular",
+  "Instrutores e veículos organizados lado a lado",
+  "Cadastro e histórico de aulas reunidos",
+];
+
+const faqs = [
+  {
+    question: "O que é o Novus CFC?",
+    answer: "É um sistema de gestão para autoescolas que reúne agenda, alunos, instrutores e veículos em uma única operação.",
+  },
+  {
+    question: "O aluno consegue solicitar aulas pelo celular?",
+    answer: "Sim. O aluno consulta as opções disponibilizadas pelo CFC e solicita aulas pelo celular, conforme a disponibilidade configurada pela autoescola.",
+  },
+  {
+    question: "O sistema ajuda a organizar instrutores e veículos?",
+    answer: "A equipe acompanha horários e disponibilidade na agenda do CFC para coordenar aulas, instrutores e veículos com mais clareza.",
+  },
+  {
+    question: "Preciso instalar alguma coisa?",
+    answer: "O Novus CFC é um sistema web, acessado pelo navegador. Na demonstração, a equipe explica como o acesso funciona para a sua autoescola.",
+  },
+  {
+    question: "Quanto custa?",
+    answer: "Os valores são apresentados na demonstração, de acordo com a rotina e as necessidades da sua autoescola.",
+  },
+  {
+    question: "O que é um sistema de gestão para autoescola?",
+    answer: "É um software que reúne agenda de aulas, cadastro de alunos, instrutores e veículos de um CFC em um só lugar, para a equipe trabalhar com a mesma informação, sem depender de caderno, planilha ou conversas.",
+  },
+  {
+    question: "Quantas autoescolas e instrutores usam o Novus CFC?",
+    answer: "Hoje, 20 autoescolas e mais de 80 instrutores autônomos usam o Novus CFC, com mais de 5.000 alunos cadastrados e mais de 1 milhão de aulas marcadas e feitas.",
+  },
+  {
+    question: "O Novus CFC serve para instrutor autônomo e para quem quer controlar as próprias aulas?",
+    answer: "Sim, existem páginas específicas para cada perfil: autoescolas, instrutores autônomos e pessoas que querem controlar suas aulas. Fale com a equipe pelo WhatsApp para ver como se adapta ao seu caso.",
+  },
+  {
+    question: "Como funciona a demonstração?",
+    answer: "A equipe apresenta o Novus CFC e conversa com você sobre a rotina da sua autoescola. A demonstração é agendada diretamente pelo WhatsApp.",
+  },
+];
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Novus CFC",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description,
+  url: "https://thenovustech.com.br/",
+  author: {
+    "@type": "Organization",
+    name: "NovusTech",
+    url: "https://thenovustech.com.br",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ question, answer }) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(softwareSchema)}></script>
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+<main id="conteudo" class="nl" tabindex="-1">
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="orb orb-plum"></span>
+      <span class="orb orb-orange"></span>
+      <span class="orb orb-yellow"></span>
+      <span class="hero-grid"></span>
+    </div>
+
+    <div class="wrap hero-copy">
+      <a class="pill pill-link rise" style="--d:0ms" href="#recursos">
+        <i class="pill-dot"></i> Sistema de gestão para autoescolas <Icon name="arrow" size={14} />
+      </a>
+      <h1 class="rise" style="--d:60ms">Gestão simples para autoescolas que <em>querem mais.</em></h1>
+      <p class="hero-sub rise" style="--d:120ms">Agenda, alunos, instrutores e veículos em um só sistema — e o aluno pede aula pelo celular. Chega de caderno, planilha e mensagem perdida.</p>
+      <div class="hero-actions rise" style="--d:180ms">
+        <a class="btn btn-primary" href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={20} /> Agendar demonstração</a>
+        <a class="btn btn-ghost" href="#produto">Ver o sistema <Icon name="arrowDown" size={16} /></a>
+      </div>
+      <p class="hero-note rise" style="--d:240ms"><Icon name="check" size={14} stroke={2.4} /> Demonstração guiada direto no WhatsApp</p>
+      <p class="proof-chip rise" style="--d:280ms"><b>20</b> autoescolas <i></i> <b>+80</b> instrutores autônomos <i></i> <b>+5.000</b> alunos <i></i> <b>+1M</b> de aulas</p>
+      <p class="cnpj-chip rise" style="--d:300ms"><Icon name="shield" size={14} stroke={2} /> {company.name} · CNPJ <b>{company.cnpj}</b></p>
+    </div>
+
+    <div id="produto" class="wrap stage rise" style="--d:360ms">
+      <div class="toast toast-a" aria-hidden="true">
+        <span class="toast-icon"><Icon name="phone" size={16} /></span>
+        <span><b>Nova solicitação</b><small>Rafael Costa · Moto · hoje 09:00</small></span>
+        <em>agora</em>
+      </div>
+      <div class="toast toast-b" aria-hidden="true">
+        <span class="toast-icon toast-ok"><Icon name="check" size={16} stroke={2.4} /></span>
+        <span><b>Aula confirmada</b><small>Marina Alves · Carro 02 · 08:00</small></span>
+      </div>
+
+      <div class="window" data-tilt data-tabgroup data-autoplay="5200">
+        <div class="window-bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="window-title"><img src="/imgs/logoNovusTech.png" width="18" height="18" alt="" class="win-logo" />Novus CFC · Autoescola Central</span>
+          <span class="window-live"><i></i>Ao vivo</span>
+        </div>
+        <div class="window-body">
+          <aside class="side" aria-label="Menu ilustrativo do sistema">
+            <span class="side-link is-on"><Icon name="home" size={16} />Visão geral</span>
+            <span class="side-link"><Icon name="calendar" size={16} />Agenda</span>
+            <span class="side-link"><Icon name="users" size={16} />Alunos</span>
+            <span class="side-link"><Icon name="instructor" size={16} />Instrutores</span>
+            <span class="side-link"><Icon name="car" size={16} />Veículos</span>
+            <span class="side-user"><b>AC</b><span>Administração<small>Autoescola Central</small></span></span>
+          </aside>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div><p class="kicker">Visão do dia</p><h2>Acompanhe a operação</h2></div>
+              <span class="fake-btn"><Icon name="plus" size={14} stroke={2.4} /> Nova aula</span>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="Prévia dos módulos do Novus CFC">
+              <button type="button" role="tab" id="tab-agenda" aria-selected="true" aria-controls="p-agenda" data-tab><span>Agenda</span><i class="tab-bar"></i></button>
+              <button type="button" role="tab" id="tab-alunos" aria-selected="false" aria-controls="p-alunos" data-tab><span>Alunos</span><i class="tab-bar"></i></button>
+              <button type="button" role="tab" id="tab-frota" aria-selected="false" aria-controls="p-frota" data-tab><span>Frota</span><i class="tab-bar"></i></button>
+            </div>
+
+            <div class="tabpanel" role="tabpanel" id="p-agenda" aria-labelledby="tab-agenda" data-panel>
+              <div class="stats">
+                <div><small>Aulas hoje</small><b>12</b><span>na agenda</span></div>
+                <div><small>Solicitações</small><b>04</b><span>para revisar</span></div>
+                <div><small>Horários livres</small><b>08</b><span>ao longo do dia</span></div>
+              </div>
+              <div class="rows">
+                <div class="row row-head"><span>Hora</span><span>Aluno</span><span>Instrutor</span><span>Veículo</span><span>Status</span></div>
+                {schedule.map((lesson) => (
+                  <div class="row">
+                    <span class="mono">{lesson.time}</span>
+                    <span class="who"><i class="avatar">{initials(lesson.name)}</i>{lesson.name}</span>
+                    <span>{lesson.instructor}</span>
+                    <span>{lesson.vehicle}</span>
+                    <span><i class:list={["tag", lesson.tone]}>{lesson.status}</i></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="tabpanel" role="tabpanel" id="p-alunos" aria-labelledby="tab-alunos" data-panel hidden>
+              <div class="list-head"><b>Alunos recentes</b><span>03 registros</span></div>
+              <div class="list">
+                {students.map((student) => (
+                  <div class="list-row">
+                    <i class:list={["avatar", student.tone]}>{initials(student.name)}</i>
+                    <span class="grow"><b>{student.name}</b><small>{student.category}</small></span>
+                    <span class="meter"><span class="meter-top"><b>{student.done} de {student.total}</b><small>aulas</small></span><span class="meter-track"><i style={`width:${(student.done / student.total) * 100}%`}></i></span></span>
+                    <i class:list={["tag", student.tone]}>{student.status}</i>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="tabpanel" role="tabpanel" id="p-frota" aria-labelledby="tab-frota" data-panel hidden>
+              <div class="list-head"><b>Disponibilidade da frota</b><span>04 veículos</span></div>
+              <div class="fleet">
+                {fleet.map((vehicle) => (
+                  <div class="fleet-card">
+                    <span class="fleet-code">{vehicle.code}</span>
+                    <span class="grow"><b>{vehicle.name}</b><small>{vehicle.detail}</small></span>
+                    <i class:list={["state", vehicle.tone]}><u></u>{vehicle.state}</i>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="stage-caption">Prévia ilustrativa com dados de exemplo.</p>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee" aria-label="O que o Novus CFC organiza">
+    <div class="marquee-track">
+      {[0, 1].map((copy) => (
+        <ul aria-hidden={copy === 1 ? "true" : undefined}>
+          {marquee.map((item) => (<li><i></i>{item}</li>))}
+        </ul>
+      ))}
+    </div>
+  </section>
+
+  <Profiles />
+
+  <PhotoBand />
+
+  <Numbers />
+
+  <BrazilMap />
+
+  <Trust />
+
+  <!-- ANTES / DEPOIS -->
+  <section class="section" id="problema">
+    <div class="wrap">
+      <header class="head reveal">
+        <p class="eyebrow">O dia a dia de um CFC</p>
+        <h2>Da bagunça do dia a dia<br /><em>para uma operação conectada.</em></h2>
+        <p class="lead">Quando a informação está espalhada, cada aula vira uma pequena negociação. O Novus CFC põe tudo na mesma tela.</p>
+      </header>
+      <div class="versus">
+        <article class="versus-card versus-before reveal">
+          <p class="versus-label"><Icon name="x" size={14} stroke={2.4} /> Sem sistema</p>
+          <ul>{before.map((item) => (<li><i><Icon name="x" size={13} stroke={2.6} /></i>{item}</li>))}</ul>
+        </article>
+        <article class="versus-card versus-after reveal" style="--d:100ms">
+          <p class="versus-label"><Icon name="check" size={14} stroke={2.6} /> Com o Novus CFC</p>
+          <ul>{after.map((item) => (<li><i><Icon name="check" size={13} stroke={2.8} /></i>{item}</li>))}</ul>
+          <a class="versus-link" href={whatsapp} target="_blank" rel="noopener noreferrer">Quero ver na prática <Icon name="arrow" size={16} /></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECURSOS (BENTO) -->
+  <section class="section section-tint" id="recursos">
+    <div class="wrap">
+      <header class="head reveal">
+        <p class="eyebrow">Recursos do produto</p>
+        <h2>Tudo que a operação precisa,<br /><em>conversando entre si.</em></h2>
+        <p class="lead">Agenda, alunos, instrutores, veículos e agendamento online — conectados, para você acompanhar cada aula com clareza.</p>
+      </header>
+
+      <div class="bento">
+        <article class="card spot reveal b-agenda">
+          <div class="card-copy"><span class="card-icon"><Icon name="calendar" size={18} /></span><h3>O dia, sem pontos cegos.</h3><p>Veja horários, alunos, instrutores e veículos em relação uns aos outros — numa agenda só.</p></div>
+          <div class="mini mini-agenda" aria-label="Prévia ilustrativa da agenda">
+            <div class="mini-top"><b>Agenda do dia</b><span>Hoje</span></div>
+            {schedule.slice(0, 3).map((lesson) => (
+              <div class="mini-row">
+                <span class="mono">{lesson.time}</span>
+                <span class="grow"><b>{lesson.name}</b><small>{lesson.instructor} · {lesson.vehicle}</small></span>
+                <i class:list={["tag", lesson.tone]}>{lesson.status}</i>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article class="card spot reveal b-student" style="--d:80ms">
+          <div class="card-copy"><span class="card-icon"><Icon name="users" size={18} /></span><h3>Cadastro com contexto.</h3><p>Informações e histórico de aulas reunidos em um só lugar.</p></div>
+          <div class="mini">
+            <div class="mini-person"><i class="avatar plum">MA</i><span class="grow"><b>Marina Alves</b><small>Aluna · Categoria B</small></span><i class="tag plum">Em andamento</i></div>
+            <div class="ring-wrap">
+              <div class="ring" style="--v:40"><b>40%</b></div>
+              <span><b>08 de 20 aulas</b><small>Progresso registrado</small></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card spot reveal b-instructor">
+          <div class="card-copy"><span class="card-icon"><Icon name="instructor" size={18} /></span><h3>Agenda acessível para a equipe.</h3><p>Instrutores acompanham horários e compromissos do dia.</p></div>
+          <div class="mini">
+            <div class="mini-top"><b>Paulo Silva</b><span class="tag plum">4 aulas</span></div>
+            <div class="mini-row"><span class="mono">08:00</span><i class="bar plum"></i><span class="grow"><b>Marina Alves</b><small>Carro 02</small></span></div>
+            <div class="mini-row"><span class="mono">10:00</span><i class="bar orange"></i><span class="grow"><b>Bruna Lima</b><small>Carro 01</small></span></div>
+          </div>
+        </article>
+
+        <article class="card spot reveal b-fleet" style="--d:80ms">
+          <div class="card-copy"><span class="card-icon"><Icon name="car" size={18} /></span><h3>Frota ligada aos horários.</h3><p>Disponibilidade dos veículos junto com a agenda das aulas.</p></div>
+          <div class="mini">
+            <div class="mini-row"><span class="fleet-code">01</span><span class="grow"><b>Carro 01</b><small>Categoria B</small></span><i class="state busy"><u></u>Em aula</i></div>
+            <div class="mini-row"><span class="fleet-code">02</span><span class="grow"><b>Carro 02</b><small>Categoria B</small></span><i class="state ready"><u></u>Livre 09:00</i></div>
+          </div>
+        </article>
+
+        <article class="card spot reveal b-booking" style="--d:160ms">
+          <div class="card-copy"><span class="card-icon"><Icon name="phone" size={18} /></span><h3>O aluno pede a aula pelo celular.</h3><p>Consulta as opções disponíveis e envia a solicitação ao CFC.</p></div>
+          <div class="mini">
+            <div class="mini-top"><b>Novo pedido de aula</b><span>1 de 2</span></div>
+            <div class="select"><small>Categoria</small><b>Carro · Categoria B</b></div>
+            <div class="slots"><span class="on">09:00</span><span>10:30</span><span>14:00</span></div>
+            <div class="fake-btn fake-block">Continuar <Icon name="arrow" size={14} stroke={2.4} /></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section" id="como-funciona">
+    <div class="wrap">
+      <header class="head reveal">
+        <p class="eyebrow">Como funciona</p>
+        <h2>Todo mundo acompanha<br /><em>o mesmo ritmo.</em></h2>
+        <p class="lead">Da solicitação do aluno até a aula na agenda, a informação segue um caminho só.</p>
+      </header>
+
+      <div class="flow" data-tabgroup data-autoplay="3800">
+        <div class="steps reveal">
+          <button type="button" class="step is-active" data-tab aria-pressed="true"><span class="step-n">01</span><span><b>O aluno solicita a aula</b><small>Consulta os horários disponíveis e envia a solicitação pelo celular.</small></span><i class="step-bar"></i></button>
+          <button type="button" class="step" data-tab aria-pressed="false"><span class="step-n">02</span><span><b>A equipe organiza</b><small>Instrutor, veículo e horário se encontram na agenda do CFC.</small></span><i class="step-bar"></i></button>
+          <button type="button" class="step" data-tab aria-pressed="false"><span class="step-n">03</span><span><b>A aula entra na agenda</b><small>Aluno e instrutor acompanham o compromisso, e a gestão enxerga tudo.</small></span><i class="step-bar"></i></button>
+        </div>
+
+        <div class="feed reveal" style="--d:100ms">
+          <div class="feed-head"><span>Fluxo de exemplo</span><span class="live"><i></i>Ao vivo</span></div>
+          <div class="feed-item f1"><span class="mono">09:00</span><i class="bar plum"></i><span class="grow"><b>Solicitação recebida</b><small>Rafael Costa · Categoria A</small></span><span class="feed-ic"><Icon name="bell" size={15} /></span></div>
+          <div class="feed-item f2"><span class="mono">09:12</span><i class="bar yellow"></i><span class="grow"><b>Horário organizado</b><small>Instrutora Luana · Moto 01</small></span><span class="feed-ic"><Icon name="calendar" size={15} /></span></div>
+          <div class="feed-item f3"><span class="mono">09:14</span><i class="bar orange"></i><span class="grow"><b>Aula na agenda</b><small>Quarta-feira · 10:00</small></span><span class="feed-ic feed-ok"><Icon name="check" size={15} stroke={2.6} /></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSPECTIVAS -->
+  <section class="section section-tint" id="perspectivas">
+    <div class="wrap">
+      <header class="head reveal">
+        <p class="eyebrow">Um sistema, três perspectivas</p>
+        <h2>Cada pessoa encontra<br /><em>o que precisa.</em></h2>
+      </header>
+
+      <div class="persp reveal" data-tabgroup>
+        <div class="persp-tabs" role="tablist" aria-label="Perspectivas do Novus CFC">
+          <button type="button" role="tab" id="pt-aluno" aria-selected="true" aria-controls="pp-aluno" data-tab><span class="persp-ic"><Icon name="phone" size={18} /></span><span><b>Aluno</b><small>Mais autonomia para marcar. Solicita aulas, consulta saldo e acompanha o histórico pelo celular.</small></span></button>
+          <button type="button" role="tab" id="pt-instrutor" aria-selected="false" aria-controls="pp-instrutor" data-tab><span class="persp-ic"><Icon name="instructor" size={18} /></span><span><b>Instrutor</b><small>Uma agenda para acompanhar. Consulta horários, compromissos e alunos da própria rotina.</small></span></button>
+          <button type="button" role="tab" id="pt-admin" aria-selected="false" aria-controls="pp-admin" data-tab><span class="persp-ic"><Icon name="chart" size={18} /></span><span><b>Administração</b><small>Mais contexto para gerir. Coordena alunos, instrutores, veículos e aulas no mesmo sistema.</small></span></button>
+        </div>
+
+        <div class="persp-stage">
+          <div class="persp-panel" role="tabpanel" id="pp-aluno" aria-labelledby="pt-aluno" data-panel>
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <p class="kicker">Novus CFC · Aluno</p>
+              <h4>Olá, Marina</h4>
+              <div class="phone-balance"><span><small>Aulas feitas</small><b>08 / 20</b></span><div class="ring ring-sm" style="--v:40"><b>40%</b></div></div>
+              <p class="phone-label">Pedir nova aula</p>
+              <div class="select"><small>Categoria</small><b>Carro · Categoria B</b></div>
+              <div class="slots"><span class="on">09:00</span><span>10:30</span><span>14:00</span></div>
+              <div class="fake-btn fake-block">Solicitar aula <Icon name="arrow" size={14} stroke={2.4} /></div>
+            </div>
+          </div>
+
+          <div class="persp-panel" role="tabpanel" id="pp-instrutor" aria-labelledby="pt-instrutor" data-panel hidden>
+            <div class="sheet">
+              <div class="mini-top"><b>Agenda do instrutor</b><span>Paulo Silva · Hoje</span></div>
+              <div class="mini-row"><span class="mono">08:00</span><i class="bar plum"></i><span class="grow"><b>Marina Alves</b><small>Carro 02 · Categoria B</small></span><i class="tag ok">Confirmada</i></div>
+              <div class="mini-row"><span class="mono">10:00</span><i class="bar orange"></i><span class="grow"><b>Bruna Lima</b><small>Carro 01 · Categoria B</small></span><i class="tag ok">Confirmada</i></div>
+              <div class="mini-row"><span class="mono">14:00</span><i class="bar yellow"></i><span class="grow"><b>Caio Mendes</b><small>Carro 03 · Categoria B</small></span><i class="tag wait">Solicitada</i></div>
+            </div>
+          </div>
+
+          <div class="persp-panel" role="tabpanel" id="pp-admin" aria-labelledby="pt-admin" data-panel hidden>
+            <div class="sheet">
+              <div class="mini-top"><b>Visão da operação</b><span>Exemplo</span></div>
+              <div class="stats">
+                <div><small>Instrutores</small><b>04</b><span>na equipe</span></div>
+                <div><small>Aulas hoje</small><b>12</b><span>na agenda</span></div>
+                <div><small>Veículos</small><b>06</b><span>na frota</span></div>
+              </div>
+              <div class="bars" aria-hidden="true"><i style="--h:42%"></i><i style="--h:68%"></i><i style="--h:55%"></i><i style="--h:82%"></i><i style="--h:63%"></i><i style="--h:90%"></i><i style="--h:48%"></i></div>
+              <div class="bars-labels" aria-hidden="true"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <GuidesTeaser />
+
+  <!-- FAQ -->
+  <section class="section" id="duvidas">
+    <div class="wrap faq">
+      <header class="faq-intro reveal">
+        <p class="eyebrow">Perguntas frequentes</p>
+        <h2>Ficou com <em>dúvida?</em></h2>
+        <p class="lead">Converse com nossa equipe sobre a rotina da sua autoescola e conheça o sistema.</p>
+        <a class="btn btn-dark" href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={20} /> Falar com a equipe</a>
+      </header>
+      <div class="faq-list reveal" style="--d:100ms">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary><span>{faq.question}</span><i aria-hidden="true"><Icon name="plus" size={16} stroke={2.2} /></i></summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="contato" class="final">
+    <div class="wrap">
+      <div class="final-card reveal">
+        <span class="orb orb-orange" aria-hidden="true"></span>
+        <span class="orb orb-yellow" aria-hidden="true"></span>
+        <span class="final-grid" aria-hidden="true"></span>
+        <p class="eyebrow eyebrow-light">Novus CFC · Demonstração</p>
+        <h2>Veja o Novus CFC<br /><em>na rotina da sua autoescola.</em></h2>
+        <p class="final-sub">Converse com a equipe pelo WhatsApp e agende uma demonstração guiada.</p>
+        <a class="btn btn-yellow" href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={20} /> Agendar demonstração</a>
+        <p class="final-id"><Icon name="shield" size={14} /> {company.name} · CNPJ {company.cnpj}</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<a class="sticky-cta" href={whatsapp} target="_blank" rel="noopener noreferrer" data-sticky aria-hidden="true" tabindex="-1">
+  <Icon name="whatsapp" size={20} /> Agendar demonstração
+</a>
+
+<script>
+  import "../scripts/interactions";
+</script>

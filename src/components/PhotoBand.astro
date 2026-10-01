@@ -1,0 +1,40 @@
+---
+interface Props {
+	heading?: string;
+	lead?: string;
+}
+
+const {
+	heading = "Por trás de cada aula,<br /><em>gente de verdade.</em>",
+	lead = "O Novus CFC existe para deixar a rotina de quem ensina e de quem aprende mais simples.",
+} = Astro.props;
+---
+
+<section class="section photo-band" aria-labelledby="photos-title">
+	<div class="wrap">
+		<header class="head reveal">
+			<p class="eyebrow">Aula prática, do jeito que é</p>
+			<h2 id="photos-title" set:html={heading} />
+			<p class="lead">{lead}</p>
+		</header>
+		<div class="photos">
+			<figure class="photo photo-1 reveal">
+				<img src="/imgs/fotos/instrutor-aula-pratica.jpg" width="1100" height="733" loading="lazy" decoding="async" alt="Instrutor orientando um aluno com uma prancheta em um pátio de aula prática" />
+				<figcaption>Instrutor acompanhando a aula</figcaption>
+			</figure>
+			<figure class="photo photo-2 reveal" style="--d:80ms">
+				<img src="/imgs/fotos/aluna-sorrindo.jpg" width="733" height="1100" loading="lazy" decoding="async" alt="Aluna sorrindo ao volante durante uma aula de direção" />
+				<figcaption>Aluna aprendendo com confiança</figcaption>
+			</figure>
+			<figure class="photo photo-3 reveal" style="--d:160ms">
+				<img src="/imgs/fotos/instrutor-e-aluno.jpg" width="1100" height="619" loading="lazy" decoding="async" alt="Instrutor e aluno dentro do carro durante uma aula" />
+				<figcaption>Instrutor e aluno na estrada</figcaption>
+			</figure>
+			<figure class="photo photo-4 reveal" style="--d:240ms">
+				<img src="/imgs/fotos/aluno-dirigindo.jpg" width="1100" height="735" loading="lazy" decoding="async" alt="Aluno com as mãos no volante durante uma aula de direção" />
+				<figcaption>Cada aula, um passo</figcaption>
+			</figure>
+		</div>
+		<p class="photo-credit">Imagens ilustrativas · Fotos: Unsplash</p>
+	</div>
+</section>

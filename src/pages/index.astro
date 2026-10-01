@@ -1,10 +1,13 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
+import "../styles/landing.css";
+import Layout from "../layouts/Layout.astro";
+import NovusCFCLanding from "../components/NovusCFCLanding.astro";
+
+const title = "Sistema para Autoescola | Agenda e Gestão de CFC – Novus CFC";
+const description = "Novus CFC é o sistema de gestão para autoescolas: agenda de aulas, alunos, instrutores e veículos em um só lugar. Alunos pedem aula pelo celular.";
 ---
 
-<Layout>
-	<Welcome/>
+<Layout title={title} description={description} canonicalPath="/">
+	<NovusCFCLanding />
 </Layout>

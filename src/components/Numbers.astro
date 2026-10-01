@@ -1,0 +1,28 @@
+---
+import { stats } from "../data/company";
+
+const cards = [
+	{ ...stats.autoescolas, main: false },
+	{ ...stats.alunos, main: true },
+	{ ...stats.instrutores, main: false },
+	{ ...stats.aulas, main: false },
+];
+const display = (item: (typeof cards)[number]) => item.prefix + item.value.toLocaleString("pt-BR") + item.suffix;
+---
+
+<section class="numbers" aria-labelledby="numbers-title">
+	<div class="wrap">
+		<header class="head reveal">
+			<p class="eyebrow">Números do Novus CFC</p>
+			<h2 id="numbers-title">Quem usa, <em>cresce com a gente.</em></h2>
+		</header>
+		<div class="numbers-grid">
+			{cards.map((item, index) => (
+				<article class:list={["number-card", "reveal", { "number-card-main": item.main }]} style={`--d:${index * 90}ms`}>
+					<b class="number-value">{item.prefix}<span data-count={item.value} data-suffix={item.suffix || undefined}>{item.value.toLocaleString("pt-BR")}{item.suffix}</span></b>
+					<p>{item.label}<br />{item.caption}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>

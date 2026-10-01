@@ -1,0 +1,116 @@
+---
+import "../../styles/global.css";
+import "../../styles/landing.css";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import GuidesTeaser from "../../components/GuidesTeaser.astro";
+import { guides, getGuide } from "../../data/guides";
+import { company, whatsappLink } from "../../data/company";
+import { renderInline } from "../../data/inline";
+
+export function getStaticPaths() {
+	return guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+
+const { guide } = Astro.props;
+const path = `/guias/${guide.slug}`;
+const url = new URL(path, company.site).href;
+const ogImage = "/imgs/og-guias.png";
+const whatsapp = whatsappLink(guide.cta.message);
+const dateLabel = new Date(guide.published + "T12:00:00").toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+
+const schema = [
+	{
+		"@context": "https://schema.org",
+		"@type": "Article",
+		headline: guide.h1,
+		description: guide.description,
+		inLanguage: "pt-BR",
+		datePublished: guide.published,
+		dateModified: guide.published,
+		mainEntityOfPage: url,
+		image: new URL(ogImage, company.site).href,
+		author: { "@type": "Organization", name: company.name, url: company.site },
+		publisher: { "@type": "Organization", name: company.name, taxID: company.cnpj },
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		mainEntity: guide.faqs.map(({ question, answer }) => ({
+			"@type": "Question",
+			name: question,
+			acceptedAnswer: { "@type": "Answer", text: answer },
+		})),
+	},
+];
+---
+
+<Layout
+	title={`${guide.title} | Novus CFC`}
+	description={guide.description}
+	canonicalPath={path}
+	ogImage={ogImage}
+	type="article"
+	publishedTime={guide.published}
+	breadcrumbs={[{ name: "Guias", path: "/guias" }, { name: guide.title, path }]}
+>
+	{schema.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)}></script>)}
+	<main id="conteudo" class="nl" tabindex="-1">
+		<article class="guide-hero">
+			<div class="wrap">
+				<nav class="crumbs" aria-label="Você está em">
+					<a href="/">Início</a><span aria-hidden="true">/</span><a href="/guias">Guias</a><span aria-hidden="true">/</span><span aria-current="page">{guide.title}</span>
+				</nav>
+				<h1>{guide.h1}</h1>
+				<p class="guide-meta"><time datetime={guide.published}>{dateLabel}</time> · {guide.readMinutes} min de leitura · Por {company.name}</p>
+			</div>
+		</article>
+
+		<div class="wrap guide-layout">
+			<div class="guide-body">
+				{guide.sections.map((section) => (
+					<section id={section.id} class="guide-section">
+						<h2>{section.h2}</h2>
+						{section.paragraphs?.map((paragraph) => <p set:html={renderInline(paragraph)} />)}
+						{section.list && (section.list.type === "ol"
+							? <ol>{section.list.items.map((item) => <li set:html={renderInline(item)} />)}</ol>
+							: <ul>{section.list.items.map((item) => <li set:html={renderInline(item)} />)}</ul>)}
+					</section>
+				))}
+
+				<section id="perguntas" class="guide-section">
+					<h2>Perguntas frequentes</h2>
+					<div class="faq-list">
+						{guide.faqs.map((faq) => (
+							<details class="faq-item">
+								<summary><span>{faq.question}</span><i aria-hidden="true"><Icon name="plus" size={16} stroke={2.2} /></i></summary>
+								<p>{faq.answer}</p>
+							</details>
+						))}
+					</div>
+				</section>
+			</div>
+
+			<aside class="guide-aside" aria-label="Neste guia">
+				<div class="aside-card">
+					<p class="kicker">Neste guia</p>
+					<ol>
+						{guide.sections.map((section) => <li><a href={`#${section.id}`}>{section.h2}</a></li>)}
+						<li><a href="#perguntas">Perguntas frequentes</a></li>
+					</ol>
+				</div>
+				<div class="aside-card aside-cta">
+					<b>{guide.cta.title}</b>
+					<p>{guide.cta.text}</p>
+					<a class="btn btn-primary" href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={20} /> Falar no WhatsApp</a>
+					<small>{company.name} · CNPJ {company.cnpj}</small>
+				</div>
+			</aside>
+		</div>
+
+		<GuidesTeaser exclude={guide.slug} heading="Continue <em>aprendendo.</em>" />
+	</main>
+	<script>
+		import "../../scripts/interactions";
+	</script>
+</Layout>

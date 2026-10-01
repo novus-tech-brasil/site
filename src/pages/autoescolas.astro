@@ -1,0 +1,120 @@
+---
+import AudiencePage from "../components/AudiencePage.astro";
+import Icon from "../components/Icon.astro";
+import { company } from "../data/company";
+
+const schedule = [
+	{ time: "08:00", name: "Marina Alves", ini: "MA", instructor: "Paulo Silva", vehicle: "Carro 02", status: "Confirmada", tone: "ok" },
+	{ time: "09:00", name: "Rafael Costa", ini: "RC", instructor: "Luana Reis", vehicle: "Moto 01", status: "Solicitada", tone: "wait" },
+	{ time: "10:00", name: "Bruna Lima", ini: "BL", instructor: "Paulo Silva", vehicle: "Carro 01", status: "Confirmada", tone: "ok" },
+	{ time: "11:00", name: "Caio Mendes", ini: "CM", instructor: "Luana Reis", vehicle: "Carro 03", status: "Confirmada", tone: "ok" },
+];
+---
+
+<AudiencePage
+	current="autoescolas"
+	seo={{
+		title: "Software para Autoescola: agenda, alunos e frota | Novus CFC",
+		description: "Software de gestão para autoescolas e CFCs: agenda de aulas, alunos, instrutores e veículos em um só lugar. 20 autoescolas já usam. Peça uma demonstração.",
+		path: "/autoescolas",
+		ogImage: "/imgs/og-autoescolas.png",
+		crumb: "Autoescolas",
+		audience: "Autoescolas e CFCs",
+	}}
+	hero={{
+		eyebrow: "Para autoescolas e CFCs",
+		titleHtml: "A gestão da sua autoescola,<br /><em>sem caderno e sem planilha.</em>",
+		sub: "Agenda, alunos, instrutores e veículos no mesmo sistema — e o aluno solicita a aula pelo celular. Sua equipe enxerga o dia inteiro em uma só tela.",
+		cta: "Agendar demonstração",
+		note: "Demonstração guiada direto no WhatsApp",
+	}}
+	message="Olá! Tenho uma autoescola e quero conhecer o Novus CFC e agendar uma demonstração."
+	caption="Prévia ilustrativa com dados de exemplo."
+	versus={{
+		beforeLabel: "O dia a dia da autoescola",
+		headingHtml: "Menos desencontro entre aluno, instrutor e veículo.<br /><em>Mais controle na operação.</em>",
+		lead: "Quando cada informação mora em um lugar, a recepção vira central de recados. O Novus CFC põe tudo na mesma tela.",
+		before: [
+			"Agenda no caderno, na planilha ou na cabeça",
+			"Pedidos de aula perdidos no meio das conversas",
+			"Instrutor e veículo disputando o mesmo horário",
+			"Histórico do aluno espalhado em vários lugares",
+		],
+		after: [
+			"Uma agenda única, visível para toda a equipe",
+			"O aluno solicita a aula direto pelo celular",
+			"Instrutores e veículos organizados lado a lado",
+			"Cadastro e histórico de aulas reunidos",
+		],
+	}}
+	featuresHeadingHtml="Tudo que a sua operação precisa,<br /><em>conversando entre si.</em>"
+	featuresLead="Seis frentes do dia a dia de um CFC, conectadas em um só sistema."
+	features={[
+		{ icon: "calendar", title: "Agenda do dia", text: "Horários, alunos, instrutores e veículos em relação uns aos outros, numa agenda só." },
+		{ icon: "users", title: "Cadastro de alunos", text: "Informações e histórico de aulas reunidos para consulta rápida." },
+		{ icon: "instructor", title: "Agenda dos instrutores", text: "Cada instrutor acompanha seus horários e compromissos do dia." },
+		{ icon: "car", title: "Frota ligada aos horários", text: "Veja a disponibilidade dos veículos junto com a agenda das aulas." },
+		{ icon: "phone", title: "Agendamento pelo celular", text: "O aluno consulta as opções disponíveis e envia a solicitação ao CFC." },
+		{ icon: "chart", title: "Visão da operação", text: "A gestão acompanha alunos, instrutores, veículos e aulas no mesmo lugar." },
+	]}
+	stepsHeadingHtml="Da solicitação à aula na agenda,<br /><em>um caminho só.</em>"
+	steps={[
+		{ title: "O aluno solicita a aula", text: "Consulta os horários disponíveis e envia a solicitação pelo celular." },
+		{ title: "A equipe organiza", text: "Instrutor, veículo e horário se encontram na agenda do CFC." },
+		{ title: "A aula entra na agenda", text: "Aluno e instrutor acompanham o compromisso, e a gestão enxerga tudo." },
+	]}
+	faqs={[
+		{ question: "O Novus CFC serve para a minha autoescola?", answer: "Ele foi feito para a rotina de autoescolas e CFCs: agenda, alunos, instrutores e veículos em uma única operação. Na demonstração, a equipe conversa sobre a sua realidade." },
+		{ question: "O aluno consegue solicitar aulas pelo celular?", answer: "Sim. O aluno consulta as opções disponibilizadas pelo CFC e solicita aulas pelo celular, conforme a disponibilidade configurada pela autoescola." },
+		{ question: "O sistema ajuda a organizar instrutores e veículos?", answer: "A equipe acompanha horários e disponibilidade na agenda do CFC para coordenar aulas, instrutores e veículos com mais clareza." },
+		{ question: "Preciso instalar alguma coisa?", answer: "O Novus CFC é um sistema web, acessado pelo navegador. Na demonstração, a equipe explica como o acesso funciona para a sua autoescola." },
+		{ question: "O que é um sistema de gestão para autoescola?", answer: "É um software que reúne em um só lugar as tarefas do dia a dia de um CFC: agenda de aulas, cadastro de alunos, escala de instrutores e uso dos veículos. Assim, toda a equipe trabalha com a mesma informação, sem depender de caderno, planilha ou conversas." },
+		{ question: "Como organizar a agenda de uma autoescola?", answer: "O ponto de partida é ter uma agenda única, em que cada aula mostre aluno, instrutor e veículo ao mesmo tempo. Isso evita horários sobrepostos e deixa claro o que está livre. O Novus CFC foi pensado exatamente para essa visão." },
+		{ question: "Quantas autoescolas usam o Novus CFC?", answer: "Hoje, 20 autoescolas usam o Novus CFC, com mais de 5.000 alunos cadastrados e mais de 1 milhão de aulas marcadas e feitas." },
+		{ question: "Quanto custa?", answer: "Os valores são apresentados na demonstração, de acordo com a rotina e as necessidades da sua autoescola." },
+	]}
+	finalHtml="Veja o Novus CFC<br /><em>na rotina da sua autoescola.</em>"
+	finalSub="Converse com a equipe pelo WhatsApp e agende uma demonstração guiada."
+>
+	<div slot="visual">
+		<div class="window" data-tilt>
+			<div class="window-bar">
+				<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+				<span class="window-title"><img src="/imgs/logoNovusTech.png" width="18" height="18" alt="" class="win-logo" />Novus CFC · Autoescola Central</span>
+				<span class="window-live"><i></i>Ao vivo</span>
+			</div>
+			<div class="window-body">
+				<aside class="side" aria-hidden="true">
+					<span class="side-link"><Icon name="home" size={16} />Visão geral</span>
+					<span class="side-link is-on"><Icon name="calendar" size={16} />Agenda</span>
+					<span class="side-link"><Icon name="users" size={16} />Alunos</span>
+					<span class="side-link"><Icon name="instructor" size={16} />Instrutores</span>
+					<span class="side-link"><Icon name="car" size={16} />Veículos</span>
+					<span class="side-user"><b>AC</b><span>Administração<small>Autoescola Central</small></span></span>
+				</aside>
+				<div class="panel">
+					<div class="panel-head"><div><p class="kicker">Agenda de hoje</p><h2>Acompanhe a operação</h2></div><span class="fake-btn"><Icon name="plus" size={14} stroke={2.4} /> Nova aula</span></div>
+					<div class="tabpanel">
+						<div class="stats">
+							<div><small>Aulas hoje</small><b>12</b><span>na agenda</span></div>
+							<div><small>Solicitações</small><b>04</b><span>para revisar</span></div>
+							<div><small>Horários livres</small><b>08</b><span>ao longo do dia</span></div>
+						</div>
+						<div class="rows">
+							<div class="row row-head"><span>Hora</span><span>Aluno</span><span>Instrutor</span><span>Veículo</span><span>Status</span></div>
+							{schedule.map((lesson) => (
+								<div class="row">
+									<span class="mono">{lesson.time}</span>
+									<span class="who"><i class="avatar">{lesson.ini}</i>{lesson.name}</span>
+									<span>{lesson.instructor}</span>
+									<span>{lesson.vehicle}</span>
+									<span><i class:list={["tag", lesson.tone]}>{lesson.status}</i></span>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</AudiencePage>

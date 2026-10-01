@@ -9,6 +9,10 @@ const site = 'https://thenovustech.com.br';
 // https://astro.build/config
 export default defineConfig({
   site,
+  trailingSlash: 'ignore',
+  redirects: {
+    '/novus-cfc': '/',
+  },
 
   //   integrations: [react()],
   vite: {

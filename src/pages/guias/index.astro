@@ -1,0 +1,41 @@
+---
+import "../../styles/global.css";
+import "../../styles/landing.css";
+import Layout from "../../layouts/Layout.astro";
+import GuidesTeaser from "../../components/GuidesTeaser.astro";
+import Profiles from "../../components/Profiles.astro";
+import { guides } from "../../data/guides";
+import { company } from "../../data/company";
+
+const title = "Guias para Autoescolas e Instrutores | Novus CFC";
+const description = "Guias práticos sobre sistema para autoescola, organização da agenda de aulas e controle de aulas de direção, para CFCs, instrutores autônomos e alunos.";
+---
+
+<Layout title={title} description={description} canonicalPath="/guias" ogImage="/imgs/og-guias.png" breadcrumbs={[{ name: "Guias", path: "/guias" }]}>
+	<script
+		type="application/ld+json"
+		set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "CollectionPage",
+			name: title,
+			description,
+			url: new URL("/guias", company.site).href,
+			inLanguage: "pt-BR",
+			hasPart: guides.map((guide) => ({ "@type": "Article", headline: guide.title, url: new URL(`/guias/${guide.slug}`, company.site).href })),
+		})}
+	></script>
+	<main id="conteudo" class="nl" tabindex="-1">
+		<section class="guide-hero">
+			<div class="wrap">
+				<nav class="crumbs" aria-label="Você está em"><a href="/">Início</a><span aria-hidden="true">/</span><span aria-current="page">Guias</span></nav>
+				<h1>Guias para autoescolas,<br /><em>instrutores e alunos.</em></h1>
+				<p class="lead">Conteúdo prático para organizar a agenda, escolher um sistema e controlar as aulas de direção.</p>
+			</div>
+		</section>
+		<GuidesTeaser heading="Todos os <em>guias.</em>" />
+		<Profiles eyebrow="Conheça o Novus CFC" heading="O sistema por trás <em>dos guias.</em>" />
+	</main>
+	<script>
+		import "../../scripts/interactions";
+	</script>
+</Layout>

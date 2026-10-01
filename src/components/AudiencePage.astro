@@ -1,0 +1,202 @@
+---
+import "../styles/global.css";
+import "../styles/landing.css";
+import Layout from "../layouts/Layout.astro";
+import Icon from "./Icon.astro";
+import Numbers from "./Numbers.astro";
+import Trust from "./Trust.astro";
+import Profiles from "./Profiles.astro";
+import GuidesTeaser from "./GuidesTeaser.astro";
+import PhotoBand from "./PhotoBand.astro";
+import { company, whatsappLink } from "../data/company";
+
+interface Feature {
+	icon: string;
+	title: string;
+	text: string;
+}
+
+interface Props {
+	current: "autoescolas" | "instrutores" | "alunos";
+	seo: { title: string; description: string; path: string; ogImage: string; crumb: string; audience: string };
+	hero: { eyebrow: string; titleHtml: string; sub: string; cta: string; note: string };
+	message: string;
+	caption: string;
+	versus: { headingHtml: string; lead: string; beforeLabel: string; before: string[]; after: string[] };
+	featuresHeadingHtml: string;
+	featuresLead: string;
+	features: Feature[];
+	stepsHeadingHtml: string;
+	steps: { title: string; text: string }[];
+	faqs: { question: string; answer: string }[];
+	finalHtml: string;
+	finalSub: string;
+}
+
+const { current, seo, hero, message, caption, versus, featuresHeadingHtml, featuresLead, features, stepsHeadingHtml, steps, faqs, finalHtml, finalSub } = Astro.props;
+const whatsapp = whatsappLink(message);
+
+const pageSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	name: seo.title,
+	description: seo.description,
+	url: new URL(seo.path, company.site).href,
+	inLanguage: "pt-BR",
+	isPartOf: { "@type": "WebSite", name: company.product, url: company.site },
+	publisher: { "@type": "Organization", name: company.name, taxID: company.cnpj },
+	about: { "@type": "SoftwareApplication", name: company.product, applicationCategory: "BusinessApplication", operatingSystem: "Web", audience: { "@type": "Audience", audienceType: seo.audience } },
+};
+const faqSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map(({ question, answer }) => ({
+		"@type": "Question",
+		name: question,
+		acceptedAnswer: { "@type": "Answer", text: answer },
+	})),
+};
+---
+
+<Layout title={seo.title} description={seo.description} canonicalPath={seo.path} ogImage={seo.ogImage} breadcrumbs={[{ name: seo.crumb, path: seo.path }]}>
+	<script type="application/ld+json" set:html={JSON.stringify(pageSchema)}></script>
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+	<main id="conteudo" class="nl" tabindex="-1">
+		<section id="inicio" class="hero">
+			<div class="hero-bg" aria-hidden="true">
+				<span class="orb orb-plum"></span>
+				<span class="orb orb-orange"></span>
+				<span class="orb orb-yellow"></span>
+				<span class="hero-grid"></span>
+			</div>
+
+			<div class="wrap hero-copy">
+				<p class="pill rise" style="--d:0ms"><i class="pill-dot"></i> {hero.eyebrow}</p>
+				<h1 class="rise" style="--d:60ms" set:html={hero.titleHtml} />
+				<p class="hero-sub rise" style="--d:120ms">{hero.sub}</p>
+				<div class="hero-actions rise" style="--d:180ms">
+					<a class="btn btn-primary" href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={20} /> {hero.cta}</a>
+					<a class="btn btn-ghost" href="#produto">Ver na prática <Icon name="arrowDown" size={16} /></a>
+				</div>
+				<p class="hero-note rise" style="--d:240ms"><Icon name="check" size={14} stroke={2.4} /> {hero.note}</p>
+				<p class="proof-chip rise" style="--d:280ms"><b>20</b> autoescolas <i></i> <b>+80</b> instrutores autônomos <i></i> <b>+5.000</b> alunos <i></i> <b>+1M</b> de aulas</p>
+				<p class="cnpj-chip rise" style="--d:300ms"><Icon name="shield" size={14} stroke={2} /> {company.name} · CNPJ <b>{company.cnpj}</b></p>
+			</div>
+
+			<div id="produto" class="wrap stage rise" style="--d:360ms">
+				<slot name="visual" />
+				<p class="stage-caption">{caption}</p>
+			</div>
+		</section>
+
+		<section class="section" id="problema">
+			<div class="wrap">
+				<header class="head reveal">
+					<p class="eyebrow">{versus.beforeLabel}</p>
+					<h2 set:html={versus.headingHtml} />
+					<p class="lead">{versus.lead}</p>
+				</header>
+				<div class="versus">
+					<article class="versus-card versus-before reveal">
+						<p class="versus-label"><Icon name="x" size={14} stroke={2.4} /> Sem sistema</p>
+						<ul>{versus.before.map((item) => (<li><i><Icon name="x" size={13} stroke={2.6} /></i>{item}</li>))}</ul>
+					</article>
+					<article class="versus-card versus-after reveal" style="--d:100ms">
+						<p class="versus-label"><Icon name="check" size={14} stroke={2.6} /> Com o Novus CFC</p>
+						<ul>{versus.after.map((item) => (<li><i><Icon name="check" size={13} stroke={2.8} /></i>{item}</li>))}</ul>
+						<a class="versus-link" href={whatsapp} target="_blank" rel="noopener noreferrer">Quero ver na prática <Icon name="arrow" size={16} /></a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<PhotoBand />
+
+		<Numbers />
+
+		<section class="section section-tint" id="recursos">
+			<div class="wrap">
+				<header class="head reveal">
+					<p class="eyebrow">O que você ganha</p>
+					<h2 set:html={featuresHeadingHtml} />
+					<p class="lead">{featuresLead}</p>
+				</header>
+				<div class="feat-grid">
+					{features.map((feature, index) => (
+						<article class="card spot reveal feat-card" style={`--d:${(index % 3) * 80}ms`}>
+							<span class="card-icon"><Icon name={feature.icon} size={18} /></span>
+							<div class="card-copy"><h3>{feature.title}</h3><p>{feature.text}</p></div>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="como-funciona">
+			<div class="wrap">
+				<header class="head reveal">
+					<p class="eyebrow">Como funciona</p>
+					<h2 set:html={stepsHeadingHtml} />
+				</header>
+				<ol class="steps-row">
+					{steps.map((step, index) => (
+						<li class="step-card reveal" style={`--d:${index * 100}ms`}>
+							<span class="step-n">0{index + 1}</span>
+							<h3>{step.title}</h3>
+							<p>{step.text}</p>
+						</li>
+					))}
+				</ol>
+			</div>
+		</section>
+
+		<Trust />
+
+		<Profiles current={current} eyebrow="Outras soluções" heading="O Novus CFC também serve <em>para você?</em>" />
+
+		<GuidesTeaser />
+
+		<section class="section" id="duvidas">
+			<div class="wrap faq">
+				<header class="faq-intro reveal">
+					<p class="eyebrow">Perguntas frequentes</p>
+					<h2>Ficou com <em>dúvida?</em></h2>
+					<p class="lead">Converse com nossa equipe e conheça o sistema.</p>
+					<a class="btn btn-dark" href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={20} /> Falar com a equipe</a>
+				</header>
+				<div class="faq-list reveal" style="--d:100ms">
+					{faqs.map((faq, index) => (
+						<details class="faq-item" open={index === 0}>
+							<summary><span>{faq.question}</span><i aria-hidden="true"><Icon name="plus" size={16} stroke={2.2} /></i></summary>
+							<p>{faq.answer}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="contato" class="final">
+			<div class="wrap">
+				<div class="final-card reveal">
+					<span class="orb orb-orange" aria-hidden="true"></span>
+					<span class="orb orb-yellow" aria-hidden="true"></span>
+					<span class="final-grid" aria-hidden="true"></span>
+					<p class="eyebrow eyebrow-light">Novus CFC · Demonstração</p>
+					<h2 set:html={finalHtml} />
+					<p class="final-sub">{finalSub}</p>
+					<a class="btn btn-yellow" href={whatsapp} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={20} /> {hero.cta}</a>
+					<p class="final-id"><Icon name="shield" size={14} /> {company.name} · CNPJ {company.cnpj}</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<a class="sticky-cta" href={whatsapp} target="_blank" rel="noopener noreferrer" data-sticky aria-hidden="true" tabindex="-1">
+		<Icon name="whatsapp" size={20} /> {hero.cta}
+	</a>
+
+	<script>
+		import "../scripts/interactions";
+	</script>
+</Layout>
